@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_partner_bank_form_inherit" model="ir.ui.view">
+            <field name="name">IBAN.res.partner.bank.form</field>
+            <field name="model">res.partner.bank</field>
+            <field name='inherit_id' ref='base.view_partner_bank_form'/>
+            <field name="arch" type="xml">
+                <field name="acc_holder_name" position='after'>
+                    <field name='partner_bank_iban' required="1"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="view_partner_sap" model="ir.ui.view">
+            <field name="model">res.partner</field>
+            <field name="name">view.partner.sap</field>
+            <field name="priority">15</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='vat']" position="after">
+                    <field name="supplier_code" readonly="1"/>
+                    <field name="sap_user" readonly="1"/>
+                </xpath>
+                <xpath expr="//field[@name='category_id']" position="after">
+                <field name="company_types" string="Company Type"/>
+                <field name="license_no" string="Trade License/Registration No."/>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.actions.server" id="import_sap_vendors">
+            <field name="name">Import Sap Vendors</field>
+            <field name="model_id" ref="model_res_partner"/>
+            <field name="binding_model_id" ref="model_res_partner"/>
+            <field name="binding_view_types">form,list</field>
+            <field name="state">code</field>
+            <field name="code">action = records.action_import_vendors()</field>
+        </record>
+
+
+        <record model="ir.actions.server" id="create_sap_vendors">
+            <field name="name">Create Vendors in SAP</field>
+            <field name="model_id" ref="model_res_partner"/>
+            <field name="binding_model_id" ref="model_res_partner"/>
+            <field name="binding_view_types">form,list</field>
+            <field name="state">code</field>
+            <field name="code">action = records.action_create_vendors_sap()</field>
+        </record>
+
+    </data>
+</odoo>

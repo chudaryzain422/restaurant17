@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record model="ir.actions.server" id="import_sap_products">
+            <field name="name">Import Sap Products</field>
+            <field name="model_id" ref="model_product_product"/>
+            <field name="binding_model_id" ref="model_product_product"/>
+            <field name="binding_view_types">form,list</field>
+            <field name="state">code</field>
+            <field name="code">action = records.action_import_products()</field>
+        </record>
+    </data>
+</odoo>

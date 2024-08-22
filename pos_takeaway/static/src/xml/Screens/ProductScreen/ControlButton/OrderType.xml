@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates id="template" xml:space="preserve">
+    <!-- TakeAway Button Template -->
+    <t t-name="TakeAwayLine" owl="1">
+        <div class="control-button btn btn-light rounded-0 fw-bolder"
+             t-ref="TakeAway" t-on-click="onClick">
+             <i class="fa fa-product-hunt"/>
+            <span>TakeAway Product</span>
+        </div>
+    </t>
+
+    <!-- Extend the existing Orderline template -->
+    <t t-inherit="point_of_sale.Orderline" t-inherit-mode="extension">
+        <xpath expr="//ul[@class='info-list ms-2']" position="inside">
+            <!-- Add TakeAway Indicator -->
+            <li t-if="line.takeaway_pos_line"
+                class="takeaway-indicator w-100 p-2 my-1 rounded text-bg-info text-info bg-opacity-25 text-break">
+                <i class="fa fa-tag me-1" role="img" aria-label="Take Away" title="Take Away"/>
+                <span>✓ Take Away</span>
+            </li>
+        </xpath>
+    </t>
+
+</templates>
