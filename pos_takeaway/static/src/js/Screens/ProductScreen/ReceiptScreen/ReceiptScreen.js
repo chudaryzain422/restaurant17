@@ -14,13 +14,11 @@ patch(Order.prototype, {
 
     init_from_JSON(json) {
         super.init_from_JSON(json);
-        debugger;
         this.is_take_away = json.is_take_away;
         this.is_takeaway = json.is_takeaway;
     },
     export_as_JSON() {
         const json = super.export_as_JSON();
-        debugger;
         json.is_take_away = this.is_take_away;
         json.is_takeaway = this.is_takeaway;
         return json;
@@ -31,13 +29,11 @@ patch(Orderline.prototype, {
 
     init_from_JSON(json) {
         super.init_from_JSON(json);
-        debugger;
         this.takeaway_pos_line = json.takeaway_pos_line;
     },
 
     export_as_JSON() {
         const json = super.export_as_JSON();
-        debugger;
         json.takeaway_pos_line = this.takeaway_pos_line
         return json;
     },

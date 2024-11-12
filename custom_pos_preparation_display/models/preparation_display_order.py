@@ -17,7 +17,7 @@ class PosPreparationDisplayOrder(models.Model):
         readonly=True)
 
     @api.model
-    def process_order(self, order_id, cancelled=False, note_history=None):
+    def process_order(self, order_id, cancelled=False, note_history=None, is_split=False):
         if not order_id:
             return
 
@@ -25,7 +25,7 @@ class PosPreparationDisplayOrder(models.Model):
         if not order:
             return
 
-        data = order._process_preparation_changes(cancelled, note_history)
+        data = order._process_preparation_changes(cancelled, note_history, is_split)
         preparation_displays = self.env['custom_pos_preparation_display.display'].search([
             '|', ('category_ids', 'in', list(data['category_ids'])),
             ('category_ids', '=', False)])
@@ -146,6 +146,7 @@ class PosPreparationDisplayOrder(models.Model):
                     'takeaway_pos_line': orderline.takeaway_pos_line,
                     'product_quantity': orderline.product_quantity,
                     'product_cancelled': orderline.product_cancelled,
+                    'is_split': orderline.is_split,
                     'product_category_ids': orderline.product_id.pos_categ_ids.ids,
                 })
 
@@ -166,6 +167,7 @@ class PosPreparationDisplayOrder(models.Model):
                 'last_stage_change': current_order_stage.write_date if current_order_stage else self.create_date,
                 'displayed': self.displayed,
                 'is_takeaway': self.pos_order_id.is_takeaway,
+                'note': self.pos_order_id.note,
                 'orderlines': preparation_display_orderlines,
                 'tracking_number': self.pos_order_id.tracking_number,
             }

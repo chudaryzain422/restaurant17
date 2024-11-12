@@ -37,7 +37,8 @@
     ],
     'assets': {
         'point_of_sale._assets_pos': [
-            'pos_mrp_order/static/src/overrides/components/payment_screen/payment_screen.js',
+            # 'pos_mrp_order/static/src/overrides/components/payment_screen/payment_screen.js',
+            'pos_mrp_order/static/src/overrides/components/product_screen/product_screen.js',
         ],
     },
     'images': ['static/description/banner.png'],

@@ -50,11 +50,13 @@ patch(PosStore.prototype, {
 
     async sendOrderInPreparation(order, cancelled = false) {
         let result = true;
-
+        debugger;
         if (this.preparationDisplayCategoryIds.size) {
             result = await order.sendChanges(cancelled);
+            debugger;
             if (order.originalSplittedOrder) {
-                result = await order.originalSplittedOrder.sendChanges(cancelled) && result;
+                debugger;
+                result = await order.originalSplittedOrder.sendChanges(cancelled, true) && result;
             }
         }
 
@@ -68,6 +70,7 @@ patch(PosStore.prototype, {
                 sound: false,
             });
         }
+        debugger;
 
         return super.sendOrderInPreparation(order, cancelled);
     },

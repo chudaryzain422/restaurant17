@@ -10,7 +10,7 @@
     'website': "https://www.pitsolutions.com",
 
     # for the full list
-    'category': 'Uncategorized',
+    'category': 'Integration',
     'version': '0.1',
 
     # any module necessary for this one to work correctly
@@ -22,6 +22,7 @@
         # 'views/purchase_order_form.xml',
         'views/res_partner_form.xml',
         'views/product_product_form.xml',
+        'views/stock_picking_form.xml',
     ],
 }
 

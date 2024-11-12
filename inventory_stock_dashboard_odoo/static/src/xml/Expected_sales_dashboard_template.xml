@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="Expected_sales_dashboard_template" xml:space="preserve">
+    <t t-name="ExpectedSalesDashboard" owl="1">
+        <div class="oh_dashboards" t-ref="root" style="height:100%; overflow-y:scroll; overflow-x:hidden;">
+            <!-- Grouping Options (Monthly, Quarterly, Yearly) -->
+            <div class="row mt-4 px-4" id="filters" style="padding-bottom:30px;">
+                <div class="col-md-12 d-flex justify-content-between">
+                    <h2>Sales Dashboard</h2>
+                    <div class="form-group col-4">
+                        <select id="group_by_selection" class="btn btn-primary" t-on-change="onGroupByChange">
+                            <option value="month">Month</option>
+                            <option value="quarter">Quarter</option>
+                            <option value="year">Year</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="row" id="charts">
+                <!-- Bar Graph (Expected vs Actual Sales) -->
+                <div class="col-sm-12 col-md-6 my-4">
+                    <div class="chart-container card-shadow" style="position: relative;width: 100%;height: 900px;">
+                        <h3>Expected vs Actual Sales</h3>
+                        <canvas id="sales_comparison_chart" height="400"></canvas>
+                    </div>
+                </div>
+
+                <!-- Growth Rate (Line Chart) -->
+                <div class="col-sm-12 col-md-6 my-4">
+                    <div class="chart-container card-shadow" style="position: relative;width: 100%;height: 900px;">
+                        <h3>Sales Growth Rate</h3>
+                        <canvas id="sales_growth_chart" height="400"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KPI Cards -->
+            <div class="row mt-4 px-4" id="kpis">
+                <div class="col-md-4">
+                    <div class="card gray-card">
+                        <h3>Total Sales</h3>
+                        <p><t t-out="state.total_sales"/> Aed</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card blue-card">
+                        <h3>CAGR (2023-2031)</h3>
+                        <p><t t-out="state.cagr"/>%</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card gray-card">
+                        <h3>Sales Growth</h3>
+                        <p><t t-out="state.growth_percentage"/>%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

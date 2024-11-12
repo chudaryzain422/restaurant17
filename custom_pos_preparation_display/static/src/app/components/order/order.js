@@ -70,7 +70,6 @@ export class Order extends Component {
 
     async clickOrder() {
         if (this.actionInProgress) {
-            debugger;
             return;
         }
         try {

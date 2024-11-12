@@ -8,6 +8,7 @@ export class Order extends Reactive {
         stage_id,
         displayed,
         is_takeaway,
+        note,
         responsible,
         orderlines,
         create_date,
@@ -25,6 +26,7 @@ export class Order extends Reactive {
         this.stageId = order.stage_id;
         this.displayed = order.displayed;
         this.is_takeaway = order.is_takeaway;
+        this.note = order.note;
         this.responsible = order.responsible;
         this.orderlines = order.orderlines;
         this.createDate = order.create_date;

@@ -33,7 +33,6 @@ export class Category extends Component {
                 selectedCategories.has(category.id) ||
                 selectedProducts.has(orderline.productId)
             ) {
-                debugger;
                 let quantity = orderline.productQuantity;
                 let cancelled = orderline.productCancelled;
 

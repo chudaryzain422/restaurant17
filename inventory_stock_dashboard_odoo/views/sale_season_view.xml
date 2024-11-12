@@ -1,0 +1,58 @@
+
+<odoo>
+    <record id="view_sale_season_report_tree" model="ir.ui.view">
+        <field name="name">sale.season.tree</field>
+        <field name="model">sale.season</field>
+        <field name="arch" type="xml">
+            <tree string="Seasonal Sales Report">
+                <field name="year" />
+                <field name="name" />
+                <field name="start_date" />
+                <field name="end_date" />
+            </tree>
+        </field>
+    </record>
+
+
+    <!-- Action to Open the Report -->
+    <record id="action_sale_season_report" model="ir.actions.act_window">
+        <field name="name">Seasonal Sales Report</field>
+        <field name="res_model">sale.season</field>
+        <field name="view_mode">tree,form</field>
+<!--        <field name="target">new</field>-->
+    </record>
+
+    <!-- Menu Item for Accessing the Seasonal Sales Report -->
+    <menuitem id="menu_seasonal_sales_report" name="Sales Event Report"
+               action="action_sale_season_report" />
+
+
+    <record id="view_sale_season_anlysis_report_tree" model="ir.ui.view">
+        <field name="name">sale.seasonal.analysis.report.tree</field>
+        <field name="model">sale.seasonal.analysis.report</field>
+        <field name="arch" type="xml">
+            <tree string="Seasonal Sales Report">
+
+                <field name="year" />
+                <field name="month" />
+                <field name="date_order" />
+                <field name="event_details" />
+                <field name="sales_amount" />
+            </tree>
+        </field>
+    </record>
+
+
+    <!-- Action to Open the Report -->
+    <record id="view_sale_season_anlysis_report_tree_action" model="ir.actions.act_window">
+        <field name="name">Action Seasonal Sales Report</field>
+        <field name="res_model">sale.seasonal.analysis.report</field>
+        <field name="view_mode">tree,pivot</field>
+<!--        <field name="target">new</field>-->
+    </record>
+
+    <!-- Menu Item for Accessing the Seasonal Sales Report -->
+    <menuitem id="menu_seasonal_anlysos_sales_report" name="(Anlsyys)Sales Event Report"
+               action="view_sale_season_anlysis_report_tree_action" />
+
+</odoo>

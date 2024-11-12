@@ -62,7 +62,6 @@ export class PreparationDisplay extends Reactive {
                     }
                     if (!countedOrders.has(order.id)) {
                         this.stages.get(order.stageId).orderCount++;
-                        debugger;
                         countedOrders.add(order.id);
                     }
                     // second filter, if a stage is selected the order must be in.
@@ -92,7 +91,6 @@ export class PreparationDisplay extends Reactive {
 
                 return difference;
             });
-        debugger;
         this.filteredOrders = ordersToDisplay;
     }
 
@@ -150,7 +148,6 @@ export class PreparationDisplay extends Reactive {
 
         for (const orderline of order.orderlines) {
             if (orderline.todo) {
-                debugger;
                 this.syncOrderlinesStatus(order);
                 break;
             }
@@ -372,7 +369,6 @@ export class PreparationDisplay extends Reactive {
         const orderlineIds = [];
 
         for (const orderline of order.orderlines) {
-            debugger;
             orderlineIds.push(orderline.id);
             orderlinesStatus[orderline.id] = orderline.todo;
         }

@@ -7,6 +7,7 @@ export class Orderline extends Reactive {
             id,
             internal_note = "",
             product_cancelled,
+            is_split,
             product_category_ids,
             product_id,
             product_name,
@@ -23,6 +24,7 @@ export class Orderline extends Reactive {
         this.id = id;
         this.internalNote = internal_note;
         this.productCancelled = product_cancelled;
+        this.isSplit = is_split;
         this.productCategoryIds = product_category_ids;
         this.productId = product_id;
         this.productName = product_name;

@@ -59,6 +59,8 @@ class MrpProduction(models.Model):
                         else:
                             bom = []
                         if bom:
+                            #this operation type is used for pos saprete location and its
+                            operation_type = self.env['stock.picking.type'].search([('warehouse_id.code', '=','RES W'),('code', '=', 'mrp_operation')])
                             vals = {
                                 'origin': 'POS-' + prod['pos_reference'],
                                 'state': 'confirmed',
@@ -67,6 +69,7 @@ class MrpProduction(models.Model):
                                 'product_uom_id': prod['uom_id'],
                                 'product_qty': prod['qty'],
                                 'bom_id': bom.id,
+                                'picking_type_id': operation_type.id or False,
                             }
                             mrp_order = self.sudo().create(vals)
                             list_value = []
@@ -103,4 +106,22 @@ class MrpProduction(models.Model):
                                 'move_finished_ids': [
                                     (0, 0, finished_vals)]
                             })
+                            # mrp_order.action_confirm()
+                            #
+                            # # Mark the raw material moves as done
+                            # for move in mrp_order.move_raw_ids:
+                            #     move._action_confirm()
+                            #     move._action_assign()
+                            #     move._set_quantity_done(move.product_uom_qty)
+                            #     move._action_done()
+                            #
+                            # # Mark the finished product move as done
+                            # for move in mrp_order.move_finished_ids:
+                            #     move._action_confirm()
+                            #     move._action_assign()
+                            #     move._set_quantity_done(move.product_uom_qty)
+                            #     move._action_done()
+                            #
+                            # # Mark the manufacturing order as done
+                            # mrp_order.button_mark_done()
         return True

@@ -1,0 +1,79 @@
+<odoo>
+    <data>
+        <record id="view_expected_sales_report_tree" model="ir.ui.view">
+            <field name="name">expected.sale.report.tree</field>
+            <field name="model">expected.sale.report</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="year"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="expected_sales_amount"/>
+                    <field name="actual_sales_amount"/>
+                    <field name="percentage"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_expected_sales_report_form" model="ir.ui.view">
+            <field name="name">expected.sale.report.form</field>
+            <field name="model">expected.sale.report</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="year"/>
+                                <field name="start_date"/>
+                                <field name="end_date"/>
+                            </group>
+                            <group>
+                                <field name="expected_sales_amount"/>
+                                <field name="actual_sales_amount"/>
+                                <field name="percentage"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_expected_sales_report_graph" model="ir.ui.view">
+            <field name="name">expected.sale.report.graph</field>
+            <field name="model">expected.sale.report</field>
+            <field name="arch" type="xml">
+                <graph string="Sales Comparison" type="bar" stacked="True">
+                    <field name="year" type="row"/>
+                    <field name="expected_sales_amount" type="measure"/>
+                    <field name="actual_sales_amount" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+        <record id="view_expected_sales_report_pivot" model="ir.ui.view">
+            <field name="name">expected.sale.report.pivot</field>
+            <field name="model">expected.sale.report</field>
+            <field name="arch" type="xml">
+                <pivot string="Sales Comparison">
+                    <field name="year" type="row"/>
+                    <field name="expected_sales_amount" type="measure"/>
+                    <field name="actual_sales_amount" type="measure"/>
+                </pivot>
+            </field>
+        </record>
+
+
+        <record id="action_expected_sales_report" model="ir.actions.act_window">
+            <field name="name">Expected Sales Reports</field>
+            <field name="res_model">expected.sale.report</field>
+            <field name="view_mode">tree,form,graph,pivot</field>
+        </record>
+
+        <menuitem id="menu_expected_sales_report" name="Expected Sales Reports" action="action_expected_sales_report"/>
+    </data>
+</odoo>

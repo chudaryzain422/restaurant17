@@ -42,25 +42,50 @@
                 </div>
             </div>
 
-            <div class="o_pdis_orderline w-100 bg-white overflow-auto" t-ref="orderlines-container">
-                <t t-foreach="this.getSortedOrderlines()" t-as="orderline" t-key="orderline.id">
-                    <t t-if="this.preparationDisplay.checkOrderlineVisibility(orderline)">
-                        <Orderline orderline="orderline"/>
-                    </t>
-                </t>
-                <div class="product-down-bubble position-absolute bottom-0 start-50 translate-middle d-flex align-items-center justify-content-center badge rounded-pill py-2 px-3 text-bg-dark bg-opacity-75 small "
-                     t-if="this.state.productHighlighted.length">
-                    <t t-if="this.state.productHighlighted.length === 1">
-                        <t t-esc="this.state.productHighlighted[0]"/>
-                    </t>
-                    <t t-else="">
-                        <t t-esc="this.state.productHighlighted.length"/>
-                        products
-                    </t>
-                    <i class="ms-2 oi oi-arrow-down" aria-hidden="true"></i>
+<!--            <div class="o_pdis_orderline w-100 bg-white overflow-auto" t-ref="orderlines-container">-->
+<!--                <t t-foreach="this.getSortedOrderlines()" t-as="orderline" t-key="orderline.id">-->
+<!--                    <t t-if="this.preparationDisplay.checkOrderlineVisibility(orderline)">-->
+<!--                        <Orderline orderline="orderline"/>-->
+<!--                    </t>-->
+<!--                </t>-->
+<!--                <div class="product-down-bubble position-absolute bottom-0 start-50 translate-middle d-flex align-items-center justify-content-center badge rounded-pill py-2 px-3 text-bg-dark bg-opacity-75 small "-->
+<!--                     t-if="this.state.productHighlighted.length">-->
+<!--                    <t t-if="this.state.productHighlighted.length === 1">-->
+<!--                        <t t-esc="this.state.productHighlighted[0]"/>-->
+<!--                    </t>-->
+<!--                    <t t-else="">-->
+<!--                        <t t-esc="this.state.productHighlighted.length"/>-->
+<!--                        products-->
+<!--                    </t>-->
+<!--                    <i class="ms-2 oi oi-arrow-down" aria-hidden="true"></i>-->
+<!--                </div>-->
+<!--            </div>-->
+            <t t-if="this.props.order.note">
+                <!-- Add border around the order lines if note exists -->
+                <div class="border border-dark p-2">
+                    <div class="o_pdis_orderline w-100 bg-white overflow-auto" t-ref="orderlines-container">
+                        <t t-foreach="this.getSortedOrderlines()" t-as="orderline" t-key="orderline.id">
+                            <t t-if="this.preparationDisplay.checkOrderlineVisibility(orderline)">
+                                <Orderline orderline="orderline"/>
+                            </t>
+                        </t>
+                    </div>
+                    <!-- Display note after order lines -->
+                    <div class="mt-2">
+                        <p>Note: <t t-esc="this.props.order.note"/></p>
+                    </div>
                 </div>
-            </div>
-
+            </t>
+            <t t-else="">
+                <!-- Normal orderlines display if no note -->
+                <div class="o_pdis_orderline w-100 bg-white overflow-auto" t-ref="orderlines-container">
+                    <t t-foreach="this.getSortedOrderlines()" t-as="orderline" t-key="orderline.id">
+                        <t t-if="this.preparationDisplay.checkOrderlineVisibility(orderline)">
+                            <Orderline orderline="orderline"/>
+                        </t>
+                    </t>
+                </div>
+            </t>
             <div class="o_pdis_order_card_footer bg-100">
                 <t t-set="o_pdis_last_stage"
                    t-value="this.preparationDisplay.lastStage.id == this.props.order.stageId"/>

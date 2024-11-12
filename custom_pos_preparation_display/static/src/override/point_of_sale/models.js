@@ -9,9 +9,10 @@ patch(Order.prototype, {
         super.setup(...arguments);
         this.noteHistory = {};
     },
-    async sendChanges(cancelled) {
+                                 // new parameter added here
+    async sendChanges(cancelled, isSplit = false) {
+        debugger;
         for (const note of Object.values(this.noteHistory)) {
-            debugger;
             for (const n of note) {
                 const line = this.get_orderline(n.lineId);
                 n.qty = line?.get_quantity();
@@ -23,6 +24,7 @@ patch(Order.prototype, {
             this.server_id,
             cancelled,
             this.noteHistory,
+            isSplit,  // new argument added here
         ]);
 
         // if (result && !this.finalized && this.pos.config.module_pos_restaurant) {
@@ -30,6 +32,7 @@ patch(Order.prototype, {
         //     // We send the "last_order_change" back to the server
         //     await this.pos.sendDraftToServer();
         // }
+        debugger;
 
         this.noteHistory = {};
         return true;

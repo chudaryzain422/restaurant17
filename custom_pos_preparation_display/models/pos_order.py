@@ -21,7 +21,7 @@ class PosOrder(models.Model):
     def _get_line_note(self, line):
         return ""
 
-    def _process_preparation_changes(self, cancelled=False, note_history=None):
+    def _process_preparation_changes(self, cancelled=False, note_history=None,is_split=False):
         self.ensure_one()
         flag_change = False
         sound = False
@@ -148,8 +148,12 @@ class PosOrder(models.Model):
                     if pdis_qty > qty_to_cancel:
                         line.product_cancelled += qty_to_cancel
                         qty_to_cancel = 0
+                        if is_split:
+                            line.is_split = True
                     elif pdis_qty <= qty_to_cancel:
                         line.product_cancelled += pdis_qty
                         qty_to_cancel -= pdis_qty
+                        if is_split:
+                            line.is_split = True
 
         return {'change': flag_change, 'sound': sound, 'category_ids': category_ids}

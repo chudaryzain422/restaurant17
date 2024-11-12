@@ -11,6 +11,7 @@ class PosPreparationDisplayOrderline(models.Model):
     product_id = fields.Many2one('product.product', string="Product ID")
     product_quantity = fields.Integer("Quantity of ordered product")
     product_cancelled = fields.Integer("Quantity of cancelled product")
+    is_split = fields.Boolean('Is Split',default=False)
     preparation_display_order_id = fields.Many2one(
         'custom_pos_preparation_display.order', required=True, index=True, ondelete='cascade')
     takeaway_pos_line = fields.Boolean("Is TakeAway Product",default=False)

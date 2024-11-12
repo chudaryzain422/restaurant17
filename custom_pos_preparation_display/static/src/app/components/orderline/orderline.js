@@ -14,7 +14,6 @@ export class Orderline extends Component {
     }
 
     get attributeData() {
-        debugger;
         const attributeVal = this.preparationDisplay.attributeValues;
         const attributes = this.preparationDisplay.attributes;
 

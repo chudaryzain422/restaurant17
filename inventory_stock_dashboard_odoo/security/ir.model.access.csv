@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sales_yearly_report,sales_yearly_report,model_sales_yearly_report,base.group_user,1,1,1,1
+access_sale_season,sale_season,model_sale_season,,1,1,1,1
+access_sale_seasonal_analysis_report,sale_seasonal_analysis_report,model_sale_seasonal_analysis_report,,1,1,1,1
+access_expected_sale_report,expected.sale.report,model_expected_sale_report,base.group_user,1,1,1,1
+
