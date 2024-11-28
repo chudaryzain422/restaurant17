@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+        <record id="view_pos_session_form_inherit_counter"
+                model="ir.ui.view">
+            <field name="name">pos.session.form.view.inherit.counter</field>
+            <field name="model">pos.session</field>
+            <field name="inherit_id"
+                   ref="point_of_sale.view_pos_session_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='stop_at']" position="after">
+                    <field name="pos_counter_id" required="state == 'opening_control'"
+                           options="{'no_open': True, 'no_create': True}"/>
+                    <field name="pos_counter_name" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+
+
+        <record id="view_pos_session_tree_inherit_counter"
+                model="ir.ui.view">
+            <field name="name">pos.session.tree.view.inherit.counter</field>
+            <field name="model">pos.session</field>
+            <field name="inherit_id"
+                   ref="point_of_sale.view_pos_session_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='user_id']" position="after">
+                    <field name="pos_counter_id"/>
+                    <field name="pos_counter_name" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- <record id="view_pos_session_kanban_inherit_counter"
+            model="ir.ui.view">
+            <field name="name">pos.session.kanban.view.inherit.counter</field>
+            <field name="model">pos.session</field>
+            <field name="inherit_id"
+                ref="point_of_sale.view_pos_session_kanban" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='user_id']" position="after">
+                    <field name="pos_counter_id" />
+                </xpath>
+                <xpath expr="//o_kanban_record_bottom//oe_kanban_bottom_left"
+                    position="inside">
+                    <span>
+                        <field name="pos_counter_id" />
+                    </span>
+                </xpath>
+            </field>
+        </record> -->
+
+
+        <record id="account_pos_counter_view_tree" model="ir.ui.view">
+            <field name="name">pos.counter.tree</field>
+            <field name="model">pos.counter</field>
+            <field name="arch" type="xml">
+                <tree string="PoS Counter">
+                    <field name="sequence" widget="handle"/>
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="grill_counter"/>
+                    <field name="grill_pos_box_ip"/>
+                    <field name="no_of_print_kot"/>
+                    <field name="iface_customer_facing_display"/>
+                    <field name="iface_electronic_scale"/>
+
+                    <!-- <field name="network_printer_ids" /> -->
+                </tree>
+            </field>
+        </record>
+
+        <record id="pos_counter_view_form" model="ir.ui.view">
+            <field name="name">pos.counter.form</field>
+            <field name="model">pos.counter</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="grill_pos_box_ip"/>
+                                <field name="no_of_print_kot"/>
+                                <field name="iface_customer_facing_display"/>
+                                <field name="iface_electronic_scale"/>
+                                <!-- <field name="network_printer_ids" /> -->
+                            </group>
+                            <group>
+                                <field name="code"/>
+                                <field name="grill_counter"/>
+                                <field name="sequence"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="account_pos_counter" model="ir.actions.act_window">
+            <field name="name">PoS Counters</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pos.counter</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="account_pos_counter_view_tree"/>
+        </record>
+
+
+        <menuitem name="POS Counters" id="menu_pos_counter"
+                  parent="point_of_sale.menu_point_config_product"
+                  action="account_pos_counter" sequence="10"
+                  groups="point_of_sale.group_pos_manager"/>
+
+
+    </data>
+</odoo>

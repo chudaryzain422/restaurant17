@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="counter_assets" inherit_id="point_of_sale.assets">
+		<xpath expr="//link[@id='pos-stylesheet']" position="after">
+			<link rel="stylesheet" href="/pos_counter/static/src/css/pos.css" id="pos_counter-stylesheet" />
+		</xpath>
+		<xpath expr="." position="inside">
+			<script type="text/javascript" src="/pos_counter/static/src/js/pos_counter.js"></script>
+		</xpath>
+	</template>
+
+</odoo>

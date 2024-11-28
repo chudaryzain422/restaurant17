@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<odoo>
+	<data>
+		<record id="view_souq_product_import_form" model="ir.ui.view">
+			<field name="name">souq.product.import.form</field>
+			<field name="model">souq.product.import</field>
+			<field name="arch" type="xml">
+				<form string="ImportGrill items">
+					<sheet>
+
+						<group>
+							<group>
+								<field name="xlsx_file"/>
+							</group>
+
+						</group>
+                         <footer>
+                        <button name="import_product" type="object" string="import" class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
+
+
+		<record id="action_pos_import_product_actioh" model="ir.actions.act_window">
+			<field name="name">Import Products </field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">souq.product.import</field>
+
+		</record>
+
+<!--		User only for developers for importing the grill qty and product master-->
+		<menuitem name="Import Products" id="menu_pos_grill_fish_import"
+				  sequence="10"
+			parent="point_of_sale.menu_point_config_product"
+			action="action_pos_import_product_actioh"
+			/>
+	</data>
+
+</odoo>

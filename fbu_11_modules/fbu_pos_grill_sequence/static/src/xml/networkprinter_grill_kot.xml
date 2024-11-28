@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="NetworkPrinterGrillKOT">
+        <receipt
+                align='center'
+                width='40'
+                line-ratio='0.4'
+                value-decimals='3'
+                value-thousands-separator=''
+                value-autoint='on'
+        >
+            <t t-set="no_of_print_kot" t-value="order.pos.config.no_of_print_kot"/>
+<!--            <t t-set="no_of_print_kot" t-value="1"/>-->
+            <t t-foreach="no_of_print_kot" t-as="kot">
+                   <h1>KOT</h1>
+                <br/>
+                <div bold="on" font="b"><t t-esc="order.name"/></div>
+                <div bold="on" font="b">Order Date : <t t-esc="order.get_validation_date()"/></div>
+                <div bold="on" font="b">Order Time : <t t-esc="order.get_validation_time()"/></div>
+                <hr/>
+                <div class='orderlines' line-ratio='0.7'>
+                    <line bold="on">
+                        <left> <t t-esc="'Item'"/></left>
+                        <right> <t t-esc="'Qty '"/></right>
+                    </line>
+                    <br/>
+                    <t t-foreach="order.get_breakfast_order_lines()" t-as="breakfast">
+                    <line>
+                        <left><t t-esc="breakfast.name"/></left>
+                        <right><t t-esc="breakfast.qty"/>
+                            Order(s)</right>
+                    </line>
+                    <line>
+                        <left>Note: <t t-esc="breakfast.note"/></left>
+                    </line>
+                        <hr/>
+                    </t>
+                    <t t-foreach="order.get_ready_to_eat_order_lines()" t-as="readyline">
+                    <line>
+                        <left><t t-esc="readyline.name"/></left>
+                        <right><t t-esc="readyline.qty"/>
+                            Order(s)</right>
+                    </line>
+                    <line>
+                    <left>Note: <t t-esc="readyline.note"/></left>
+                    </line>
+                    <hr/>
+                    </t>
+                    <t t-foreach="order.get_grill_order_lines()" t-as="orderline">
+                        <line>
+                            <left><t t-esc="orderline.get_product().display_name"/>
+                                <t t-if="orderline.get_product().arabic_name"> / <span
+                                        t-esc="orderline.get_product().arabic_name"/></t>
+                                <t t-if="orderline.get_medium_level()">:<span t-esc="orderline.get_medium_level()" /></t>
+                            </left>
+                            <right>
+                                <t t-if="!orderline.get_grillqty() and !orderline['is_ready_to_eat']">
+                                    <t t-esc="order.format_currency_no_symbol(orderline.get_quantity_str_with_unit())"/>
+                                </t>
+                                <t t-if="orderline.get_grillqty()">
+                                      <t t-esc="orderline.get_grillnqty()"/>X
+                                    <t t-esc="orderline.get_grillqty().display_name"/>
+                                </t>
+                            </right>
+                        </line>
+                        <t t-if="!orderline.get_product().consumable_bom">
+                                <t t-if="orderline.get_marinade()">
+                                    <span> <div underline="on" bold="on" font="b">Marinades</div>
+                                        <t t-esc="orderline.get_marinade().display_name"/>
+                                    </span>
+                                </t>
+                            <t t-set="addons" t-value="orderline.get_addons()"/>
+                            <t t-if="addons !== 'undefined' and addons.length > 0">
+                                     <ul tabwidth='5' bullet='*'>
+                                         <div underline="on" bold="on" font="b"><t t-esc="orderline.get_addon_filling_heading()"/></div>
+                                         <t t-foreach="addons" t-as="addon">
+                                                <li><t t-esc="addon.display_name" />
+                                                    @
+                                                    <t t-esc="addon.product_tmpl_lst_price"/></li>
+                                            </t>
+                                     </ul>
+                                </t>
+                            </t>
+                        <div bold="on" font="b">
+                            <t t-if="orderline.get_fishname()">
+                                <h4><span t-esc="orderline.get_fishname().name"/></h4>
+                            </t>
+                        </div>
+                        <div>
+                            <t t-if="orderline.get_kitchennotes()">
+                            <t t-set="kitchennotes" t-value="orderline.get_kitchennotes()"/>
+                                <t t-if="kitchennotes !== 'undefined' and kitchennotes.length > 0">
+                                    <ul tabwidth='5' bullet='->'>
+                                         <div underline="on" bold="on" font="b">Kitchen Note</div>
+
+                                        <t t-foreach="kitchennotes" t-as="kitchennote">
+                                                <li><t t-esc="kitchennote.name" /></li>
+                                            </t>
+                                     </ul>
+                                </t>
+                            </t>
+                        </div>
+                        <div>
+                            <t t-if="orderline.get_grillnote()">
+                                <div underline="on" bold="on" font="b">Grill Note : </div>
+                                <t t-esc="orderline.get_grillnote()"/>
+                            </t>
+                        </div>
+                        <hr/>
+                    </t>
+                    <t t-set="kot_no" t-value="order.get_grill_sequence_number()"/>
+                    <div bold="on" font="b">Token No : #<t t-esc="kot_no"/></div>
+
+                    <t t-if="order.get_delivery_date()">
+                        <div bold="on" font="b">Pick up @<t t-esc="order.get_delivery_date().weekday"/>
+                            <br/>
+                            <t t-esc="order.get_delivery_date().date_long"/>
+                        </div>
+                    </t>
+                    <img t-att-src="order.get_barcode_url()" class='receipt-barcode-img'/>
+                    <barcode encoding="EAN13"><t t-esc="order.get_barcode()"/></barcode>
+                </div>
+                <t t-if="!kot_last">
+                    <cut/>
+                </t>
+            </t>
+        </receipt>
+    </t>
+
+</templates>

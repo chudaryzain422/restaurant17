@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="view_pos_pos_form_inherit_grill" model="ir.ui.view">
+			<field name="name">pos.order.form.inherit.grill</field>
+			<field name="model">pos.order</field>
+			<field name="inherit_id" ref="point_of_sale.view_pos_pos_form" />
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='lines']/tree/field[@name='price_subtotal_incl']"
+					position="after">
+					<field name="product_price" groups="base.group_no_one" />
+					<field name="pos_grill_method_id" groups="base.group_no_one" />
+					<field name="bom_id" groups="base.group_no_one" />
+					<field name="fish_id" groups="base.group_no_one" />
+					<field name="pos_grill_addon_ids" groups="base.group_no_one"  widget="many2many_tags"  />
+					<field name="pos_grill_note_ids" groups="base.group_no_one" widget="many2many_tags"  />
+					<field name="grill_note" groups="base.group_no_one" optional="hide"/>
+					<field name="pos_grill_qty_id" groups="base.group_no_one" />
+				</xpath>
+				<xpath expr="//field[@name='lines']/form/group/field[@name='notice']"
+					position="after">					
+					<field name="pos_grill_method_id" groups="base.group_no_one" />
+					<field name="bom_id" groups="base.group_no_one" />
+					<field name="fish_id" groups="base.group_no_one" />
+					<field name="pos_grill_note_ids" groups="base.group_no_one" widget="many2many_tags"  />
+					<field name="grill_note" groups="base.group_no_one" optional="hide"/>
+					<field name="grill_nqty" groups="base.group_no_one" />
+					<field name="pos_grill_qty_id" groups="base.group_no_one" />	
+					<field name="pos_grill_addon_ids" groups="base.group_no_one"  widget="many2many_tags"  />					
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>

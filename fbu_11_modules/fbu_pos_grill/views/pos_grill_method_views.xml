@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="view_pos_grill_method_form" model="ir.ui.view">
+        <field name="name">pos.grill.method.form</field>
+        <field name="model">pos.grill.method</field>
+        <field name="arch" type="xml">
+            <form string="POS Grill Methods">
+                <header>
+                    <button name="action_approve" string="Approve" type="object"/>
+                    <button name="action_cancel" string="Cancel" type="object"/>
+                    <button name="action_draft" string="Reset To Draft"
+                            type="object"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,done"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" name="action_view_boms"
+                                type="object" invisible="state != 'done'"
+                                icon="fa-flask">
+                            <field string="Marinades &amp; Addons" name="bom_count"
+                                   widget="statinfo"/>
+                        </button>
+                        <button class="oe_stat_button" type="object"
+                                name="toggle_active" icon="fa-archive">
+                            <field name="active" widget="boolean_button"
+                                   options='{"terminology": "archive"}'/>
+                        </button>
+                    </div>
+                    <field name="id" invisible="1"/>
+                    <field name="image_medium" widget="image" class="oe_avatar"/>
+                    <!-- <field name="image" widget='image' class="oe_avatar" options='{"preview_image":"image_medium"}'/> -->
+                    <div class="oe_title">
+                        <label class="oe_edit_only" for="name"
+                               string="Grill Method Name"/>
+                        <h1>
+                            <field name="name" placeholder="Grill Method Name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="product_id"/>
+                            <field name="date"/>
+                        </group>
+                        <group>
+                            <field name="user_id"/>
+                            <field name="company_id" groups="base.group_multi_company"
+                                   options="{'no_create': True}"/>
+                            <field name="is_breakfast" widget="boolean_toggle"/>
+                        </group>
+                    </group>
+                    <notebook colspan="4">
+                        <page string="Marinades" invisible="is_breakfast == True">
+                            <field name="bom_ids"/>
+                            <field name="note" class="oe_inline" placeholder="Description ..."/>
+                            <div class="oe_clear"/>
+                        </page>
+                        <page string="Kitchen Notes" invisible="is_breakfast == True">
+                            <field name="pos_grill_note_ids"/>
+                        </page>
+                        <page string="Addons">
+                            <field name="addon_ids"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_pos_grill_method_tree" model="ir.ui.view">
+        <field name="name">pos.grill.method.tree</field>
+        <field name="model">pos.grill.method</field>
+        <field name="arch" type="xml">
+            <tree string="POS Grill Method"
+                  decoration-info="state == 'draft'"
+                  decoration-muted="state in ('done','cancel')">
+                <field name="name"/>
+                <field name="code"/>
+                <field name="product_id"/>
+                <field name="date"/>
+                <field name="user_id"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_pos_grill_method_search" model="ir.ui.view">
+        <field name="name">pos.grill.method.search.view</field>
+        <field name="model">pos.grill.method</field>
+        <field name="arch" type="xml">
+            <search string="Grill Method">
+                <field name="name" string="Grill Method"/>
+                <field name="code" string="Grill Code"/>
+                <!-- <field name="product_id" string="Grill Service" /> -->
+            </search>
+        </field>
+    </record>
+
+    <record id="action_pos_grill_method"
+            model="ir.actions.act_window">
+        <field name="name">Grill Methods</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pos.grill.method</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" eval="False"/>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+
+    <menuitem id="menu_pos_grill_method"
+              name="Grill methods"
+              parent="point_of_sale.pos_config_menu_catalog"
+              action="action_pos_grill_method" groups="fbu_pos_grill.group_pos_chef"
+              sequence="20"/>
+
+    <menuitem name="bill of materials" id="menu_grill_bom" action="mrp.mrp_bom_form_action"
+              parent="point_of_sale.pos_config_menu_catalog" sequence="25"/>
+
+    <record id="mrp.menu_mrp_root" model="ir.ui.menu">
+        <field name="active" eval="True"/>
+    </record>
+
+</odoo>

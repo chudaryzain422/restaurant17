@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>		
+		
+	<template id="pos_grill_sequence_assets" inherit_id="point_of_sale.assets">
+		<xpath expr="." position="inside">
+			<script type="text/javascript" src="/fbu_pos_grill_sequence/static/src/js/pos_grill_sequence.js"/>
+		</xpath>
+	</template>
+		
+	</data>
+</odoo>

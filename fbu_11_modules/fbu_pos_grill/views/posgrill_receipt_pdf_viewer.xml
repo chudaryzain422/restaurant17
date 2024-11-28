@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="souq_pos_report_view_pdf" name="POS Recepit Queue">
+            <t t-call="web.layout">
+                <t t-set="head_website">
+                    <script type="text/javascript">
+                        odoo.session_info = {
+                        is_superuser:
+                        <t t-esc="json.dumps(request.env.user._is_superuser())"/>,
+                        is_system:
+                        <t t-esc="json.dumps(request.env.user._is_system())"/>,
+                        is_website_user:
+                        <t t-esc="json.dumps(request.env.user._is_public())"/>,
+                        user_id:
+                        <t t-esc="json.dumps(request.env.user.id)"/>,
+                        is_frontend: true,
+                        translationURL: '/website/translations',
+                        };
+                    </script>
+                    <t t-call-assets="web.assets_common" t-js="false"/>
+                    <t t-call-assets="web.assets_frontend" t-js="false"/>
+
+                    <t t-call-assets="web.assets_common" t-css="false"/>
+                    <t t-call-assets="web.assets_frontend" t-css="false"/>
+
+                </t>
+                <t t-set="head" t-value="head_website + (head or '')"/>
+                <div id="wrapwrap" t-att-class="pageName or ''">
+                    <header>
+                    </header>
+                    <main>
+
+                            <iframe  width="100%"  frameborder="0" height="80%"  t-attf-src="#{url}" />
+                    </main>
+                </div>
+            </t>
+</template>
+
+</odoo>

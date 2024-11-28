@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="pos_config_view_form_inherit_grill"
+            model="ir.ui.view">
+        <field name="name">pos.config.form.inherit.grill</field>
+        <field name="model">pos.config</field>
+        <field name="inherit_id"
+               ref="point_of_sale.pos_config_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//setting[@id='other_devices']" position="before">
+                <setting id="is_grill" string="Is Grill" help="is this shop is a grill">
+                    <field name="module_pos_grill" readonly="has_active_session"/>
+                </setting>
+
+            </xpath>
+
+            <xpath expr="//setting[@id='other_devices']" position="before">
+                <setting
+                        id="count_print_kot_recepits">
+                    <label for="no_of_print_kot" string="No. of Print KOT"/>
+                    <div class="content-group mt16">
+                        <field name="no_of_print_kot" invisible="module_pos_grill == False" colspan="4"
+                               nolabel="1"/>
+                    </div>
+                </setting>
+            </xpath>
+            <xpath expr="//setting[@id='other_devices']" position="before">
+                <h2>Manager Validation</h2>
+                <setting id="pos_grill" help="Allow to delete POS Orderline with Manager approval">
+                    <field name="need_manager_approval_ondeleteion"/>
+                    <field string="POS Managers" name="pos_manager_ids" widget="many2many_tags"
+                           placeholder="Manager"
+                           invisible="need_manager_approval_ondeleteion == False"
+                           required="need_manager_approval_ondeleteion != False"/>
+                </setting>
+            </xpath>
+            <xpath expr="//setting[@id='other_devices']" position="before">
+                <h2>Grill Section</h2>
+                <setting id="oder_line">
+                    <field name="enable_orderline_addons" string="Enable Orderline Addons"/>
+
+                </setting>
+                <setting id="company_product">
+                    <field name="enable_display_company_id" string="Display Product based on company on grill section" help="Enable Display Company"/>
+                </setting>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

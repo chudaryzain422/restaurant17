@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+pos_grill_sequence_mgr,access_pos_grill_sequence_mgr,model_pos_grill_seq,point_of_sale.group_pos_manager,1,1,1,1
+pos_grill_sequence_usr,access_pos_grill_sequence_usr,model_pos_grill_seq,point_of_sale.group_pos_user,1,1,0,0

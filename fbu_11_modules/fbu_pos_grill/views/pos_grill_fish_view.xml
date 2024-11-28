@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<odoo>
+	<data>
+		<record id="view_pos_grill_fish_form" model="ir.ui.view">
+			<field name="name">pos.grill.fish.form</field>
+			<field name="model">pos.grill.fish</field>
+			<field name="arch" type="xml">
+				<form string="Grill Fish">
+					<sheet>
+						<div class="oe_button_box" name="button_box">
+							<button name="toggle_active" type="object"
+								class="oe_stat_button" icon="fa-archive">
+								<field name="active" widget="boolean_button"
+									options="{&quot;terminology&quot;: &quot;archive&quot;}" />
+							</button>
+						</div>
+						<group>
+							<group>
+								<field name="name"/>
+							</group>
+							<group>
+								<field name="sequence" />
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="view_pos_grill_fish_tree" model="ir.ui.view">
+			<field name="name">pos.grill.fish.tree</field>
+			<field name="model">pos.grill.fish</field>
+			<field name="arch" type="xml">
+				<tree string="Grill Fish" decoration-muted="(not active)">
+					<field name="sequence" widget="handle" />
+					<field name="name"/>
+					<field name="active" widget="boolean_toggle" />
+				</tree>
+			</field>
+		</record>
+
+		<record id="view_pos_grill_fish_search" model="ir.ui.view">
+			<field name="name">pos.grill.fish.search.view</field>
+			<field name="model">pos.grill.fish</field>
+			<field name="arch" type="xml">
+				<search string="Grill Fish">
+					<field name="name" string="Fish" />
+				</search>
+			</field>
+		</record>
+
+
+		<record id="action_pos_grill_fish" model="ir.actions.act_window">
+			<field name="name">Grill Fish</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">pos.grill.fish</field>
+			<field name="view_mode">tree,form</field>
+			<field name="view_id" ref="view_pos_grill_fish_tree" />
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+		</record>
+
+
+		<menuitem id="menu_pos_grill_fish"
+			parent="point_of_sale.menu_point_config_product"
+			action="action_pos_grill_fish" groups="fbu_pos_grill.group_pos_chef"
+			sequence="20" />
+	</data>
+
+</odoo>

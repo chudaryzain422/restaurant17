@@ -20,12 +20,14 @@ patch(Order.prototype, {
         }
 
         await this.pos.sendDraftToServer();
+        debugger;
         await this.env.services.orm.call("custom_pos_preparation_display.order", "process_order", [
             this.server_id,
             cancelled,
             this.noteHistory,
             isSplit,  // new argument added here
         ]);
+        debugger;
 
         // if (result && !this.finalized && this.pos.config.module_pos_restaurant) {
         //     // This avoids the need to copy logic from the frontend to the backend.

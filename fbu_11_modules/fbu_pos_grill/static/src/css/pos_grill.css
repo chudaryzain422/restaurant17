@@ -1,0 +1,507 @@
+.pos .screen .products-layout-table {
+    width: 70%;
+    float: left;
+}
+
+.pos .screen .grill-method-table {
+    border: none;
+    width: 29%;
+    height: 100%;
+    float: left;
+    border-right: solid 1px #CECBCB;
+    border-right: solid 3px #787878;
+}
+
+.pos .pos-topheader .grill-button.highlight {
+    background: #6EC89B !important;
+    border: solid 1px #64AF8A !important;
+    color: white !important;
+}
+
+.pos .grill-method-scroller {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    -webkit-transform: translate3d(0,0,0);
+}
+
+.grill-methods {
+    border: none!important;
+    border-radius: 3px!important;
+    position: relative!important;
+    padding: 5px 30px!important;
+    margin: 10px 5px!important;
+    font-size: 12px!important;
+    min-height: 20px!important;
+    font-weight: 400!important;
+    text-transform: uppercase!important;
+    letter-spacing: 0!important;
+    will-change: box-shadow, transform!important;
+    transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1)!important;
+}
+.grill-methods.highlight {
+
+    background-color: black!important;
+}
+
+
+
+.pos .grill_method-button {
+    border: none;
+    border-radius: 3px;
+    position: relative;
+    padding: 12px 30px;
+    margin: 10px 1px;
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0;
+    will-change: box-shadow, transform;
+    transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pos .grill_method-button .grill_method-img {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+}
+
+.pos .grill_method-button .grill_method-img img{
+	height: 100%;
+    width: 100%;
+}
+
+.pos .grill_method-button .grill_method-name {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    bottom: 0;
+    top: auto;
+    line-height: 14px;
+    width: 100%;
+    padding: 3px;
+    padding-top: 15px;
+    color: #7C7BAD;
+    text-align: center;    
+}
+
+.pos .modal-dialog .popup-grill-order{
+    width: 90%;
+    height: 90%;
+    overflow: auto;
+}
+
+.pos .grill-popuporder-wrap,.pos .grill_screen,.pos .grill_screen .leftpane,.pos .grill_screen .window{
+	position: relative;
+	height:100%;
+}
+
+.pos .popup.popup-grill-order .grill-order-button {
+    float: left;
+    width: 110px;
+    /*height: 30px;
+    line-height: 30px;*/
+    margin-top: 0px;
+    margin-right: 0px;
+    font-size: 18px;
+    background: rgb(110,200,155);
+    color: #fff;
+}
+
+.pos .popup.popup-grill-order .actionpad .button {
+    position: relative;
+    display: block;
+    /*height: 54px;*/
+    width: 100%;
+    font-weight: bold;
+    vertical-align: middle;
+    color: #555555;
+    font-size: 14px;
+    border-radius: 0;
+    border: none;
+    border-right: 1px solid;
+    border-bottom: 1px solid;
+    border-color: #bfbfbf;
+    transition: all 150ms linear;
+    margin-top: 0px;
+    margin-right: 0px;
+    line-height: 0px;
+    height: 54px;
+}
+
+.pos .popup.popup-grill-order .actionpad .button.pay {
+     height: 162px; 
+}
+/* -- */
+.pos .popup.popup-grill-order .numpad{
+    display:none !important;
+}
+
+.pos .popup.popup-grill-order .actionpad{
+    display:none !important;
+}
+/* -- */
+
+.pos .popup.popup-grill-order .control-button{
+    display:none !important;
+}
+
+.pos .popup.popup-grill-order .grill_line-detail-container{
+	height: 100%;
+    position: relative;
+}
+
+.popup-grill-order .grill-title{	
+    float: left;
+    width: 95%;
+    padding: 5px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.popup-grill-order .grill-subtitle{	
+    float: left;
+    width: 95%;
+    padding: 5px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.popup-grill-order .grillmethods,.marinadesmethods,.kitchen-notes, .grillqtys,.pos-addons {
+	height:100%;
+	width: 95%;
+    padding: 5px 7px;
+    position: relative;
+}
+
+.pos .popup.popup-grill-order .button.grill-line-button{
+    float: left;
+    width: 110px;
+    height: 30px;
+    line-height: 30px;
+    /* margin-top: 0px; */
+    font-size: 14px;	
+    width:20%;
+}
+
+.pos .grill_screen .grill_marinades-container{
+	width: 100%;
+	height: 400px;
+}
+
+.pos .popup .title{
+    height: 6%;
+    padding: 2%;
+    position: -webkit-sticky; 
+    position: sticky;
+    top: 0; 
+    bottom:0;
+    overflow-y:hidden;
+    overflow-x:hidden;
+}
+
+
+.marinades {
+    border: none!important;
+    border-radius: 3px!important;
+    position: relative!important;
+    padding: 5px 30px!important;
+    margin: 10px 5px!important;
+    min-height: 50px!important;
+    font-size: 12px!important;
+    font-weight: 400!important;
+    text-transform: uppercase!important;
+    letter-spacing: 0!important;
+    will-change: box-shadow, transform!important;
+    transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1)!important;
+}
+.marinades.highlight {
+
+    background-color: tomato!important;
+}
+
+
+.kitchennotes {
+    border: none!important;
+    border-radius: 3px!important;
+    position: relative!important;
+    padding: 5px 30px!important;
+    margin: 10px 5px!important;
+    font-size: 12px!important;
+    min-height: 20px!important;
+    font-weight: 400!important;
+    text-transform: uppercase!important;
+    letter-spacing: 0!important;
+    will-change: box-shadow, transform!important;
+    transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1)!important;
+}
+.kitchennotes.highlight {
+    background-color: goldenrod!important;
+}
+
+.addons {
+    border: none!important;
+    border-radius: 3px!important;
+    position: relative!important;
+    padding: 5px 30px!important;
+    margin: 10px 5px!important;
+    font-size: 12px!important;
+    min-height: 20px!important;
+    font-weight: 400!important;
+    text-transform: uppercase!important;
+    letter-spacing: 0!important;
+    will-change: box-shadow, transform!important;
+    transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1)!important;
+}
+.addons.highlight {
+    background-color: deepskyblue!important;
+}
+
+.pos .grill_screen .grill-note textarea {
+    height:50px;
+}
+
+.pos .grill_screen .grillnqty .text-grillnqty{
+    width:10% !important;
+}
+
+.pos .popup-grill-order .product-screen .rightpane .layout-table {
+    display: table !important;
+}
+
+.pos .popup-grill-order .product-screen .rightpane {
+    pointer-events: inherit !important;
+    /*background: #c7c7c7;
+    color: #a5a1a1;*/
+    cursor: inherit !important;
+}
+.info.marinade {
+    color: tomato!important;
+}
+
+.info.kitchennote {
+    color: goldenrod!important;
+}
+
+.info.grillmethod {
+    color: black!important;
+}
+.info.line-addons {
+    color: deepskyblue!important;
+}
+
+td.pos-cooking-method {
+    text-align:left;
+    padding:10px!important;
+    color: black!important;
+}
+
+td.pos-marinade {
+    text-align:left;
+    padding:10px!important;
+    color: tomato!important;
+
+}
+
+td.pos-kitchen-note {
+    text-align:left;
+    padding:10px!important;
+    color: goldenrod!important;
+
+}
+
+td.pos-title-addons {
+    text-align:left;
+    padding:10px!important;
+    color: deepskyblue!important;
+
+}
+
+td.pos-custom-note {
+    text-align:left;
+    padding:10px!important;
+    color: grey!important;
+
+}
+
+.btn.marinades.marinade-line {
+    width:19%;
+    float: left!important;
+    padding:10px!important;
+    min-height:50px!important
+}
+
+.btn.grill-methods.grill-method-line {
+    width:19%;
+    float: left!important;
+    padding:10px!important;
+    min-height:50px!important
+}
+
+.btn.kitchennotes.kitchennote-line {
+    width:19%;
+    float: left!important;
+    padding:10px!important;
+    min-height:50px!important
+}
+
+.btn.addons.addons-line {
+    width: 19%;
+    float: left!important;
+    padding: 10px!important;
+    min-height: 50px!important;
+}
+
+.pos_cart-grill-note-detail {
+    padding:10px!important;
+}
+
+.rightpane.pos_grill_cart {
+    background: transparent!important;
+}
+
+.grill-qty {
+    border: none!important;
+    border-radius: 3px!important;
+    position: relative!important;
+    padding: 5px 30px!important;
+    margin: 10px 5px!important;
+    min-height: 50px!important;
+    font-size: 12px!important;
+    font-weight: 400!important;
+    text-transform: uppercase!important;
+    letter-spacing: 0!important;
+    will-change: box-shadow, transform!important;
+    transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1)!important;
+}
+
+.grill-qty.highlight {
+    background-color: indianred!important;
+}
+
+
+.btn.grill-qty.grill-qty-line {
+    width:19%;
+    float: left!important;
+    padding:10px!important;
+    min-height:50px!important
+}
+
+td.pos-portion-size {
+    text-align:left;
+    padding:10px!important;
+    color:indianred!important;
+}
+
+.info.grillqty {
+    color: indianred!important;   
+}
+
+.centered-content {
+    right:15%!important;
+    left:15%!important;
+    /*overflow-y: hidden!important;*/
+}
+
+.fishnames {
+    margin: 16px;
+    width: auto;
+    height: auto;
+}
+.fishnames .button {
+    background: #e2e2e2;
+    line-height: 74px;
+    font-size: 16px;
+    border: solid 1px rgb(202, 202, 202);
+    border-top-width: 0px;
+    cursor: pointer;
+    text-align: center;
+    margin: 3%;
+    width: 42%;
+    float: left;
+}
+.fishnames .button:first-child {
+    border-top-width: 1px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+.fishnames .button:last-child {
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+.fishnames .button:active {
+    background: black;
+    border-color: black;
+    color: white;
+}
+.fishname .button.active {
+    background: #6EC89B;
+    color: white;
+    border-color: #6EC89B;
+    background: black !important;
+    color: white !important;
+}
+.fishnames-container {
+    height:450px;
+    width:auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.pos .order .parent_orderline{
+    margin-left: 10px  !important;
+    color: deepskyblue!important;
+}
+.pos .order .parent_orderline .product-name{
+    width: 77% !important;
+    color: deepskyblue!important;
+}
+.pos .order .parent_orderline .price{
+    margin-right: 10px !important;
+    color: deepskyblue!important;
+}
+.pos .order .parent_orderline .info-list {
+    color: #888;
+    margin-left: 0px !important;
+    color: deepskyblue!important;
+}
+.popup_label{
+color: black;
+}
+.p_error_class,l_required{
+color:red;}
+.phide{
+display:none;}
+pos_manger_validation_err{
+}
+
+input#manager_pwd::-ms-reveal, input#manager_pwd::-ms-clear {
+    display: none !important;
+}
+
+.grill-view-radio{
+    display: flex;
+    box-shadow: none !important;
+    border: none;
+    /* font-size: 17px; */
+    min-height: 3px !important;
+}
+.grill-view-radio-input{
+   display: flex;
+    box-shadow: none !important;
+    width: 3% !important;
+    border: none;
+    min-height: 3px !important;
+    margin-right: 13px;
+    /* padding: 10px; */
+
+}

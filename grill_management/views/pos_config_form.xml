@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pos_config_form_view_inherit_grill" model="ir.ui.view">
+        <field name="name">pos.config.form.view.inherit</field>
+        <field name="model">pos.config</field>
+        <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='restaurant_on_create']" position='inside'>
+                <setting>
+                    <field name="module_pos_grill"/>
+                </setting>
+            </xpath>
+        </field>
+    </record>
+</odoo>

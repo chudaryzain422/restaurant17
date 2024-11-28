@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_qms_session,access_qms_session,model_qms_session,,1,1,1,1
+access_qms_token,access_qms_token,model_qms_token,,1,1,1,1
+access_pos_order_user,access_pos_order,point_of_sale.model_pos_order,fbu_queue_management.group_qms_user,1,0,0,0
+access_pos_order_manager,access_pos_order,point_of_sale.model_pos_order,fbu_queue_management.group_qms_manager,1,0,0,0
+access_pos_order_line_user,access_pos_order_line,point_of_sale.model_pos_order_line,fbu_queue_management.group_qms_user,1,0,0,0
+access_pos_order_line_manager,access_pos_order_line,point_of_sale.model_pos_order_line,fbu_queue_management.group_qms_manager,1,0,0,0
+access_pos_session_user,access_pos_session,point_of_sale.model_pos_session,fbu_queue_management.group_qms_user,1,0,0,0
+access_pos_session_manager,access_pos_session,point_of_sale.model_pos_session,fbu_queue_management.group_qms_manager,1,0,0,0

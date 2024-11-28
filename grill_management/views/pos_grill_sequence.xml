@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="sequence_view_inherit_grill_seq" model="ir.ui.view">
+            <field name="name">ir.sequence.inherit.grill.seq_</field>
+            <field name="model">ir.sequence</field>
+            <field name="inherit_id" ref="base.sequence_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='implementation']" position="after">
+                    <field name="is_grill"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_pos_session_form_inherit_grill_seq"
+                model="ir.ui.view">
+            <field name="name">pos.session.form.view.inherit.grill.seq_</field>
+            <field name="model">pos.session</field>
+            <field name="inherit_id"
+                   ref="point_of_sale.view_pos_session_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='user_id']" position="after">
+                    <label for="grill_offline_number"/>
+                    <div>
+                        <field class="oe_inline" name="grill_offline_number"
+                               force_save="1"/>
+                    </div>
+                    <label for="pos_grill_seq_id"/>
+                    <div>
+                        <field class="oe_inline" name="pos_grill_seq_id"
+
+                               options="{'no_open': True, 'no_create': True}" force_save="1"/>
+                    </div>
+                    <label for="grill_label"/>
+                    <div>
+                        <field class="oe_inline" name="grill_label"
+                               options="{'no_open': True, 'no_create': True}" force_save="1"/>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+
+        <record id="view_pos_grill_seq_tree" model="ir.ui.view">
+            <field name="name">pos.grill.seq.tree</field>
+            <field name="model">pos.grill.seq</field>
+            <field name="arch" type="xml">
+                <tree string="PoS Grill Sequence">
+                    <field name="name"/>
+                    <field name="sequence_id"/>
+                    <field name="sequence_number_next"/>
+                    <field name="sequence_number_start"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_pos_grill_seq_form" model="ir.ui.view">
+            <field name="name">pos.grill.seq.form</field>
+            <field name="model">pos.grill.seq</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <field name="state" widget="statusbar"
+                               statusbar_visible="run,stop"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="toggle_active" type="object"
+                                    invisible="state != 'stop'"
+                                    class="oe_stat_button" icon="fa-archive"
+                                    groups="point_of_sale.group_pos_manager">
+                                <field name="active" widget="boolean_button"
+                                       options='{"terminology": "archive"}'/>
+                            </button>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="sequence_id"
+                                       options="{'always_reload': True,
+												'no_open': True, 
+												'no_create': True, 
+												'no_create_edit': True, 
+												'no_quick_create': True}"
+                                       readonly="state != 'stop'"/>
+                            </group>
+                            <group>
+                                <field name="sequence_number_next"
+                                       readonly="state != 'stop'"/>
+                                <field name="sequence_number_start"
+                                       readonly="state != 'stop'"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_pos_grill_seq" model="ir.actions.act_window">
+            <field name="name">PoS Grill Sequence</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pos.grill.seq</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_pos_grill_seq_tree"/>
+        </record>
+
+
+        <menuitem name="PoS Grill Sequence" id="menu_pos_grill_seq"
+                  parent="point_of_sale.menu_point_config_product"
+                  action="action_pos_grill_seq" sequence="20"/>
+
+
+    </data>
+</odoo>

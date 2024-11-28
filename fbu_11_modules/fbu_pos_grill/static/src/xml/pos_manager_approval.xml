@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates id="template" xml:space="preserve">
+
+
+      <t t-name="POSManageValidationWidget">
+
+        <div class="modal-dialog clientlist-screen">
+            <div class="popup popup-text">
+                <p class="title"><t t-esc=" widget.options.title || '' " /></p>
+<!--                <p class="title"><t t-esc=" widget.options.quantity || '' " /></p>-->
+                <div class='packlot-lines'>
+
+
+                    <div>
+                          <label class="popup_label" for="fname">Email<span class="l_required">*</span>:</label>
+                        <input type="text" id="manager_email" required="1" name="manager_email" class="manager_email"
+                             placehodler="Email"  value=""/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <label class="popup_label" for="lname">Pin<span class="l_required">*</span>:</label>
+
+                       <input type="password" placehodler="pin"
+                               id="manager_pwd" required="1" name="manager_pwd" class="manager_pwd"
+                               value=""/>
+                        <input type="hidden" id="line_qty" t-att-value="widget.options.quantity"/>
+                        <br/>
+                        <br/>
+                        <br/>
+                    </div>
+                    <span class="phide p_error_class">Please fill details to proceed.</span>
+                    </div>
+                <div class="footer">
+                    	<div class="button  " id="validate_manager_pwd"> Ok </div>
+                    <div class="button cancel "> Cancel </div>
+                	</div>
+            </div>
+        </div>
+    </t>
+
+
+</templates>

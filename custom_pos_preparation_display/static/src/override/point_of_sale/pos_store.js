@@ -54,6 +54,7 @@ patch(PosStore.prototype, {
         if (this.preparationDisplayCategoryIds.size) {
             result = await order.sendChanges(cancelled);
             debugger;
+            debugger;
             if (order.originalSplittedOrder) {
                 debugger;
                 result = await order.originalSplittedOrder.sendChanges(cancelled, true) && result;

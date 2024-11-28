@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="grill_management.OrderReceipt" t-inherit="point_of_sale.OrderReceipt" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('pos-receipt')]" position="after">
+            <t t-if="props.data.module_pos_grill">
+                <div class="pos-receipt" style="page-break-before:always;">
+                    <t>
+                        <div style='text-align:center;'>
+                            <p style="margin: 3px 0px;">KOT Customer Copy Grill/Marination/Receiver</p>
+                        </div>
+	                </t>
+                    <div class="pos-center-align"> <h1
+                            style="font-size: 13px;font-weight: 900;margin:0px;line-height:1.5"><t t-esc="props.data.name"/></h1></div>
+                    <t t-if="props.data.partner">
+                            <div class="receipt-user">
+                                Customer: <t t-esc="props.data.partner.name"/>
+                            </div>
+                        </t>
+                    <div class="receipt-user">
+	                <h1 style="font-size: 13px;font-weight: 900;margin:0px;line-height:1.5; text-align:center;">Order Date : <t
+                            t-esc="props.data.date"/></h1>
+	            </div>
+                    <div class="receipt-user">
+	                <h3 style="font-size: 18px;font-weight: 900;margin:0px;line-height:1.5; text-align:center;">Order Time: <t
+                            t-esc="props.data.date"/></h3>
+	            </div>
+                </div>
+            </t>
+
+            <!--            <t t-set="kot_no" t-value="order.get_grill_sequence_number()"/>-->
+            <t t-set="Order_no" t-value="props.data.name.split(' ')[1].replace('-', '').replace('-', '')"/>
+            <h6 style="font-size: 35px;font-weight: 900;margin: 5px 0px;text-align:center;line-height:1;">
+	            	#<span t-esc="Order_no"/>
+                <span/>
+	            </h6>
+            <br/>
+
+            <div>
+                   <div class="col-5">
+                       <span style="margin-left:-60px;">
+                           <img t-if="Order_no"
+                                style="width:400px;height:70px;"
+                                t-att-src="'report/barcode/?barcode_type=%s&amp;value=%s&amp;
+                                width=%s&amp;height=%s'%('Code128',Order_no,265,80)"/>
+                       </span>
+                       <div style="margin-left:100px" t-esc="Order_no"/>
+                   </div>
+            </div>
+
+
+<!--            <table class='receipt-barcode pos-recepit-wd-cstm'>-->
+<!--	                <tr>-->
+<!--	                    <td style="text-align:center;" class="pos-receipt-order-data mb-2">-->
+<!--							<img t-if="Order_no"-->
+<!--                                 style="width:400px;height:70px;"-->
+<!--                                 t-att-src="'report/barcode/?barcode_type=%s&amp;value=%s&amp;-->
+<!--                                        width=%s&amp;height=%s'%('Code128',props.data.name,265,80)"/>-->
+<!--	           			</td>-->
+<!--	            	</tr>-->
+<!--	            </table>-->
+
+        </xpath>
+    </t>
+</templates>

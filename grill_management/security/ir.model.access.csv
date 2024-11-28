@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+pos_grill_sequence,access_pos_grill_sequence,model_pos_grill_seq,,1,1,1,1

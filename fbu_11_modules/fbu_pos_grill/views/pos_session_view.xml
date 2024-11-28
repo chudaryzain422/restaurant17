@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_pos_session_form_inherit_grill" model="ir.ui.view">
+        <field name="name">pos.session.form.grill.view</field>
+        <field name="model">pos.session</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_session_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_pos_session_closing_control']"
+                   position="after">
+                <button name="generate_session_marination_lines" type="object"
+                        string="Generate Bom lines" class="oe_highlight"
+                        invisible="state not in ['closing_control'] or bom_generated == True or grill_session == False"
+                        groups="point_of_sale.group_pos_manager"/>
+                <button name="confirm_moves" type="object"
+                        string="Move Stock" class="oe_highlight"
+                        groups="point_of_sale.group_pos_manager"
+                        invisible="state not in ['closing_control'] or bom_generated == False or stock_moved == True or grill_session == False"/>
+            </xpath>
+
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="grill_session" invisible="1"/>
+                <field name="stock_moved" invisible="1"/>
+                <field name="bom_generated" invisible="1"/>
+                <separator string="Summary of Marination" groups="point_of_sale.group_pos_manager"
+                           invisible="state not in ['closing_control'] or bom_generated == True or stock_moved == True or grill_session == False"/>
+                <field name="bom_ids" readonly="1" groups="point_of_sale.group_pos_manager"
+                       invisible="state not in ['closing_control'] or bom_generated == True or stock_moved == True or grill_session == False">
+                    <tree delete="1" create="1" string="Marinations">
+                        <field name="company_id"/>
+                        <field name="picking_type_id"/>
+                        <field name="product_id"/>
+                        <field name="product_tmpl_id"/>
+                        <field name="bom_id"/>
+                        <field name="product_qty"/>
+                        <field name="product_uom_id"/>
+                    </tree>
+                </field>
+
+                <separator string="Summary of Raw Materials"
+                           invisible="state not in ['closing_control','hold_validate'] or bom_generated == False or stock_moved == True or grill_session == False"
+                           groups="point_of_sale.group_pos_manager"/>
+                <field name="move_raw_ids" readonly="1"
+                       invisible="state not in ['closing_control','hold_validate'] or bom_generated == False or stock_moved == True or grill_session == False">
+                    <tree delete="1" create="1" default_order="is_done,sequence" decoration-muted="is_done"
+                          decoration-warning="show_quant&gt;product_uom_qty"
+                          decoration-success="show_quant==product_uom_qty"
+                          decoration-danger="show_reserved &lt; product_uom_qty"
+                          groups="point_of_sale.group_pos_manager">
+                        <field name="product_id" required="1"/>
+                        <field name="name" invisible="1"/>
+                        <field name="unit_factor" invisible="1"/>
+                        <field name="product_uom" groups="uom.group_uom"/>
+                        <field name="has_tracking" invisible="1"/>
+                        <field name="is_done" invisible="1"/>
+                        <field name="sequence" invisible="1"/>
+                        <field name="location_id" invisible="1"/>
+                        <field name="location_dest_id" invisible="1"/>
+                        <field name="state" invisible="1" force_save="1"/>
+                        <field name="product_uom_qty" string="To Consume"/>
+                        <field name="show_reserved" invisible="is_done == True" string="Reserved"/>
+                        <field name="show_quant" string="Consumed" readonly="1"/>
+                    </tree>
+                </field>
+            </xpath>
+            <xpath expr="//field[@name='pos_counter_id']" position="replace">
+                <label for="pos_counter_id"/>
+                <div>
+                    <div>
+                    <field class="oe_inline" name="pos_counter_id" required=" state == 'opening_control'"
+                           options="{'no_open': True, 'no_create': True}"/>
+                        </div>
+                    <div>
+                        <button class="oe_inline oe_highlight" name="set_pos_config_vals" type="object"
+                                string="Set POS Config"
+                                invisible="state not in ['opening_control','opened']"
+                                groups="point_of_sale.group_pos_manager" style="margin:5px;"/>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+
+</odoo>

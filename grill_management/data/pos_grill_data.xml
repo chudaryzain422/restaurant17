@@ -1,0 +1,13 @@
+<odoo>
+    <data>
+        <record id="grill" model="pos.category">
+          <field name="name">Grill</field>
+        </record>
+    </data>
+    <data noupdate="1">
+    	<record id="config_pos_proxy_ip" model="ir.config_parameter">
+            <field name="key">fbu_pos_grill.pos_proxy_ip</field>
+            <field name="value">10.10.21.247</field>
+        </record>
+    </data>
+</odoo>

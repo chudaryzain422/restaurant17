@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="index" name="QMS Index">
+        <html>
+            <head>
+                <title>Queue Management System</title>
+                <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+                <meta http-equiv="content-type" content="text/html, charset=utf-8"/>
+                <meta name="viewport" content="width=device-width, initial-scale=1"/>
+                <meta name="apple-mobile-web-app-capable" content="yes"/>
+                <meta name="mobile-web-app-capable" content="yes"/>
+
+                <script type="text/javascript">
+                    var odoo = {
+                        csrf_token: "<t t-esc="request.csrf_token(None)"/>",
+                        session_info: <t t-raw="session_info"/>,
+                    };
+                </script>
+
+                <t t-call-assets="web.assets_common"/>
+                <t t-call-assets="web.assets_frontend"/>
+                <t t-call-assets="web_editor.summernote" t-css="false"/>
+                <t t-call-assets="web_editor.assets_editor" t-css="false"/>
+                <t t-call-assets="fbu_queue_management.assets"/>
+                <script type="text/javascript" id="qms-loading-script" t-raw="init">
+                    odoo.define('web.web_client', function (require) {
+                        var WebClient = require('web.AbstractWebClient');
+                        var web_client = new WebClient();
+                        web_client._title_changed = function() {};
+                        web_client.show_application = function() {
+                            return web_client.action_manager.do_action("queue_ticket.ui");
+                        };
+
+                        $(function () {
+                            web_client.setElement($(document.body));
+                            web_client.start();
+                        });
+                        return web_client;
+                    });
+                </script>
+
+            </head>
+            <body>
+                <div class="o_main_content o_token_div">
+                    <div class="col-md-12">
+                        <div t-if="company" class="company_logo" style="min-height:155px;">
+                        <div class="col-xs-1">
+                            <!-- <span t-field="company.logo" t-options="{'widget': 'image', 'style':'width: 160px;height:125px'}"/> -->
+                        </div>
+
+                        <div class="col-xs-10" align="center" style="font-size:70px;font-weight:bold;">
+                            <image src="/fbu_queue_management/static/src/img/logo.png" style="width: 100%;height:125px;"/>
+                            <!-- <span t-field="company.name"/> -->
+                        </div>
+                        <div class="col-xs-1">
+                            <!-- <span t-field="company.logo" t-options="{'widget': 'image', 'style':'width: 160px;height:125px'}"/> -->
+                        </div>
+                        </div>
+                    </div>
+                    <hr/>
+                        <!-- <div>
+                            <span class="wk_time" t-field="t_session.start_at" t-options="{&quot;format&quot;: &quot;dd MMMM yyyy &quot;}"/>
+                        </div> -->
+                        <div align="center">
+                            <p class="token_print">Scan Order</p>
+                        </div>
+                        <div id="customer_name" align="center" style="display:none;">
+                            <p style="font-family: Arial-BoldMt !important;font-size:18px !important;color:#555555 !important">
+
+                            </p>
+                        </div>
+                        <div id="order_name" align="center">
+                            <p style="font-family: Arial-BoldMt !important;font-size:18px !important;color:#555555 !important">
+
+                            </p>
+                        </div>
+                        <div align="center" class="token_no_div">
+                            <div t-attf-class="col-md-12 qms_front2">
+                                <label class="control-label" for="name">Order Barcode</label>
+                                <input type="text" id="barcode" style="min-height:100px;" autofocus="True" name="name" class="form-control" placeholder="Order Barcode" required=""/>
+                                <br/>
+                            </div>
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <input type="hidden" id="session_id" name="t_session_id" t-att-value="t_session.id"/>
+                            <input type="hidden" id="company_id" name="t_company_id" t-att-value="t_company.id"/>
+
+                        </div>
+                        <div align="center" id="token_status_container" style="display:none;" class="token_no_div">
+                            <span id="token_status" class="token_no"></span>
+                        </div>
+                        <div align="center" id="token_no_container" style="display:none;" class="token_no_div">
+                            <span id="token_number" class="token_no"></span>
+                        </div>
+                        <input type="hidden" id="order_id" name="t_order_id" t-att-value="order_id"/>
+                        <input type="hidden" id="order_barcode" name="t_order_barcode" t-att-value="order_barcode"/>
+                        <hr class="wk_clear"/>
+                        <div id="wk_print_button" style="display:none;width:99%">
+                            <a id="process_order" class="btn btn-primary pull-left" style="font-size: 30px!important;width:30%;min-height:70px;margin-left: 20px;">
+                                <span>Preparing</span>
+                            </a>
+                            <a id="ready" class="btn btn-primary pull-left" style="font-size: 30px!important;width:30%;min-height:70px;margin-left: 20px;">
+                                <span>Ready For Delivery </span>
+                            </a>
+                            <a id="delivery" class="btn btn-primary pull-left" style="font-size: 30px!important;width:30%;min-height:70px;margin-left: 20px;">
+                                <span>Delivered</span>
+                            </a>
+
+                        </div>
+                        <hr class="wk_clear"/>
+                        <div align="center">
+                            <p style="font-family:ArialMT !important; font-size:16px !important; color: #555555 !important">
+                                Please take your seat, we will attain you soon!!
+                            </p>
+                        </div>
+                        <div class="topcorner">
+                            <div t-attf-class="js_session_close" t-att-data-id="t_session">
+                                <a t-attf-href="/qms/web/close/session/#{t_session.id}">
+                                    <span>
+                                        <button type="button">Close</button>
+                                    </span>
+                                </a>
+                                <a><button type="button" id="qms_enter" class="qms_fs">Full Sceen</button></a>
+                                <a>
+                                    <button type="button" id="qms_leave" class="qms_fs" style="display:none">
+                                        Leave Full Sceen
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                </div>
+                <!-- Image loader -->
+                <div id='loader' style='display: none;position:absolute;top:50%;left:50%;padding:2px;'>
+                  <img src='/fbu_queue_management/static/img/reload.gif' width='32px' height='32px'/>
+                </div>
+                <!-- Image loader -->
+            </body>
+        </html>
+    </template>
+
+    <template id="queue_status" name="QMS Queue">
+        <html>
+            <head>
+                <title>Queue Management System</title>
+                <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+                <meta http-equiv="content-type" content="text/html, charset=utf-8"/>
+                <meta name="viewport" content="width=device-width, initial-scale=1"/>
+                <meta name="apple-mobile-web-app-capable" content="yes"/>
+                <meta name="mobile-web-app-capable" content="yes"/>
+
+                <link rel="shortcut icon" href="/web/static/src/img/favicon.ico" type="image/x-icon"/>
+
+
+                <t t-call-assets="web.assets_common" t-css="false"/>
+                <t t-call-assets="web.assets_frontend"/>
+                <t t-call-assets="web_editor.summernote" t-css="false"/>
+                <t t-call-assets="web_editor.assets_editor" t-css="false"/>
+                <t t-call-assets="fbu_queue_management.display_assets"/>
+            </head>
+            <body>
+                <div class="o_main_content">
+                    <div class="row">
+                        <div class="col-xs-8" align="center" style="font-size:70px;font-weight:bold;width:100%">
+                            <image src="/fbu_queue_management/static/img/header.jpg" style="width: 100%;height:105px;"/>
+                        </div>
+                    </div>
+                    <div class="row" style="width:100%!important;backgrpond-color:#fff;margin-left:0px;margin-right:0px;">
+                            <t t-set="ready_out" t-value="ready"/>
+                            <div class="dept_div_ready" style="width:49%!important;float:left;min-height:500px;margin:1% 1% 0% 0% !important;">
+                                <div class="border-bottom" style="text-align:center;">
+                                    <label class="dept_label" style="color: green;margin: 0%;">
+                                        <p style="margin:0%!important;">Ready for collection / جاهز للتسليم</p>
+                                    </label>
+                                </div>
+                                <div class="ready_content">
+                                    <t t-foreach="ready_out" t-as="ready">
+                                        <div class="dep_counter">
+                                            <div class="dep_counter_token_ready">
+                                                <span class="counter_tokenno_ready">
+                                                    <t t-esc="ready.token_number"/>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </t>
+                                </div>
+                            </div>
+                            <div class="dept_div_progress" style="width:49%!important;float:left;min-height:500px;margin:1% 0% 0% 1% !important;">
+                                <div class="border-bottom" style="text-align:center;">
+                                    <label class="dept_label" style="color: orange;margin: 0%;">
+                                        <p style="margin:0%!important;">Under Preparation / قيد التحضير</p>
+                                    </label>
+                                </div>
+                                <div class="progress_content">
+                                    <t t-foreach="in_progress" t-as="progress">
+                                        <div class="dep_counter">
+                                            <div class="dep_counter_token">
+                                                    <span class="counter_tokenno_inprogress">
+                                                        <t t-esc="progress.token_number"/>
+                                                    </span>
+                                            </div>
+                                        </div>
+                                    </t>
+                                </div>
+                            </div>
+                        <input type="hidden" id="dept_offset" name="dept_offset" value="0"/>
+                        <t t-set="company" t-value="company"/>
+                        <input type="hidden" id="dept_company" name="dept_company" t-att-value="company"/>
+                        <!-- <hr class="qms_hr"/> -->
+                    </div>
+                </div>
+                <div class="topcorner">
+
+                </div>
+                <!-- Image loader -->
+                <div id='loader' style='display: none;position:absolute;top:50%;left:50%;padding:2px;'>
+                  <img src='/fbu_queue_management/static/img/reload.gif' width='32px' height='32px'/>
+                </div>
+                <!-- Image loader -->
+            </body>
+        </html>
+    </template>
+</odoo>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<record id="pos_counter_view_tree_grill_sequence"
+			model="ir.ui.view">
+			<field name="name">pos.counter.tree.grill.sequence</field>
+			<field name="model">pos.counter</field>
+			<field name="inherit_id"
+				ref="pos_counter.account_pos_counter_view_tree" />
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='no_of_print_kot']"
+					position="after">
+					<field name="pos_grill_seq_id" />
+					<field name="grill_offline_start" />
+					<field name="grill_offline_number" groups="base.group_no_one" />
+				</xpath>
+			</field>
+		</record>
+
+		<record id="pos_counter.pos_counter_view_form"
+			model="ir.ui.view">
+			<field name="name">pos.counter.form</field>
+			<field name="model">pos.counter</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+						<group>
+							<group>
+								<field name="name" />
+								<field name="grill_pos_box_ip" />
+								<field name="no_of_print_kot" />
+								<!-- <field name="network_printer_ids" /> -->
+								<field name="pos_grill_seq_id" />
+								<field name="grill_offline_start" />
+							</group>
+							<group>
+								<field name="code" />
+								<field name="grill_counter" />
+								<field name="grill_label" />
+								<field name="sequence" />
+								<field name="grill_offline_number"
+									groups="base.group_no_one" />
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
+	</data>
+</odoo>

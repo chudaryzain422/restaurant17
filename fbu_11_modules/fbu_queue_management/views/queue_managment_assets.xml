@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <template id="assets" name="fbu_queue_management assets">
+        	<!-- <script type="text/javascript" src="/fbu_queue_management/static/src/js/qms_display.js"/> -->
+            <script type="text/javascript" src="/fbu_queue_management/static/src/js/jquery.scannerdetection.js"></script> <!-- Temp Solution -->
+            <script type="text/javascript" src="/fbu_queue_management/static/src/js/main.js"></script>
+            <link rel="stylesheet" href="/fbu_queue_management/static/src/less/token_screen.less" id="qms-stylesheet"/> 
+        </template>
+
+        <template id="display_assets" name="fbu_queue_management display_assets">
+            <script type="text/javascript" src="/fbu_queue_management/static/src/js/qms_display.js"/>
+            <link rel="stylesheet" href="/fbu_queue_management/static/src/less/token_screen.less"/>
+        </template>
+</odoo>

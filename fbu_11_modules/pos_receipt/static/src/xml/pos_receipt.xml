@@ -1,0 +1,800 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="pos_receipt.PosTicket">
+    	<t t-set="no_of_print_recepits" t-value="widget.pos.config.no_of_print_recepits"/>
+    	<t t-foreach="no_of_print_recepits" t-as="l">
+	        <div class="pos-sale-ticket">
+	            <t t-set="company_id" t-value="widget.pos.company.id"/>
+	            <t t-set="company_details" t-value="widget.pos.company"/>
+	            <t t-set="trn" t-value="widget.pos.company.vat"/>
+	            <table class="pos-recepit-wd-cstm">
+	                <thead>
+	                    <!-- <tr>
+                            <th style="width: 70%;text-align: center;">
+					            <div class="pos-recepit-title" style="height: 100%!important;width:100%!important;">
+						            <div>
+						            	<center>
+						            			<span>سوق الجبيل لتجارة الأسماك</span>
+						            			<span style="color:red;">الشارقة</span>
+						            	</center>
+						            	<center>
+						            			<span>SOUQ AL JUBAIL FISH TR</span>
+						            			<span style="color:red;">Sharjah</span>
+						            	</center>
+						            </div>
+						            <div class="receipt-phone" style='text-align:center'>
+						                Phone: <t t-esc="widget.pos.company.phone || ''"/>
+						            </div>
+						            <t t-if="trn">
+						            	<span style="margin: 2px 0px;"><center> TRN : <t t-esc="trn"/></center></span>
+						            </t>
+					            </div>
+                            </th>
+	                        <th style="width: 100%;text-align: right;">
+					            <div class="pos-recepit-logo" style="height: 100%!important;width:100%!important;">
+						            <img src="/pos_receipt/static/src/img/logo_new.svg" class="pos-recepit-logo-img" style="height: 100%!important;" />
+					            </div>
+	                        </th>
+	                    </tr> -->
+
+	                    <t t-if="widget.pos.company.company_short_code == 'SQAJ'">
+			                <thead>
+			                    <tr>
+		                            <th style="width: 70%;text-align: center;">
+							            <div class="pos-recepit-title" style="height: 100%!important;width:100%!important;">
+								            <div>
+								            	<center>
+								            			<span>سوق الجبيل لتجارة الأسماك</span>
+								            			<span style="color:red;">الشارقة</span>
+								            	</center>
+								            	<center>
+								            			<span>SOUQ AL JUBAIL FISH TR RRR</span>
+								            			<span style="color:red;">Sharjah</span>
+								            	</center>
+								            </div>
+								            <div class="receipt-phone" style='text-align:center'>
+								                Phone: <t t-esc="widget.pos.company.phone || ''"/>
+								            </div>
+								            <t t-if="trn">
+								            	<span style="margin: 2px 0px;"><center> TRN : <t t-esc="trn"/></center></span>
+								            </t>
+							            </div>
+		                            </th>
+			                        <th style="width: 100%;text-align: right;">
+							            <div class="pos-recepit-logo" style="height: 100%!important;width:100%!important;">
+								            <img src="/pos_receipt/static/src/img/logo_new.svg" class="pos-recepit-logo-img" style="height: 100%!important;" />
+							            </div>
+			                        </th>
+			                    </tr>
+			                </thead>
+			            </t>
+
+			            <t t-if="widget.pos.company.company_short_code == 'SQAH'">
+			                <thead>
+			                    <tr>
+		                            <th style="width: 70%;text-align: center;">
+							            <div class="pos-recepit-title" style="height: 100%!important;width:100%!important;">
+								            <div>
+								            	<center>
+								            			<span>سوق الجبيل لتجارة الأسماك</span>
+								            			<span style="color:red;">الشارقة</span>
+								            	</center>
+								            	<center>
+								            			<span>SOUQ AL JUBAIL FISH TR</span>
+								            			<span style="color:red;">Al Hamriyah</span>
+								            	</center>
+								            </div>
+								            <div class="receipt-phone" style='text-align:center'>
+								                Phone: <t t-esc="widget.pos.company.phone || ''"/>
+								            </div>
+								            <t t-if="trn">
+								            	<span style="margin: 2px 0px;"><center> TRN : <t t-esc="trn"/></center></span>
+								            </t>
+							            </div>
+		                            </th>
+			                        <th style="width: 100%;text-align: right;">
+							            <div class="pos-recepit-logo" style="height: 100%!important;width:100%!important;">
+								            <img src="/pos_receipt/static/src/img/logo_new_sqah.png" class="pos-recepit-logo-img" style="height: 100%!important;" />
+							            </div>
+			                        </th>
+			                    </tr>
+			                </thead>
+			            </t>
+
+						<t t-if="widget.pos.company.company_short_code == 'SQAM'">
+			                <thead>
+			                    <tr>
+		                            <th style="width: 70%;text-align: center;">
+							            <div class="pos-recepit-title" style="height: 100%!important;width:100%!important;">
+								            <div>
+								            	<center>
+								            			<span>سوق الجبيل لتجارة الأسماك</span>
+								            			<span style="color:red;">الشارقة</span>
+								            	</center>
+								            	<center>
+								            			<span>SOUQ AL JUBAIL FISH TR</span>
+								            			<span style="color:red;">Al Madam</span>
+								            	</center>
+								            </div>
+								            <div class="receipt-phone" style='text-align:center'>
+								                Phone: <t t-esc="widget.pos.company.phone || ''"/>
+								            </div>
+								            <t t-if="trn">
+								            	<span style="margin: 2px 0px;"><center> TRN : <t t-esc="trn"/></center></span>
+								            </t>
+							            </div>
+		                            </th>
+			                        <th style="width: 100%;text-align: right;">
+							            <div class="pos-recepit-logo" style="height: 100%!important;width:100%!important;">
+								            <img src="/pos_receipt/static/src/img/logo_new_sqam.png" class="pos-recepit-logo-img" style="height: 100%!important;" />
+							            </div>
+			                        </th>
+			                    </tr>
+			                </thead>
+			            </t>
+
+						<t t-if="widget.pos.company.company_short_code == 'SQAD'">
+			                <thead>
+			                    <tr>
+		                            <th style="width: 70%;text-align: center;">
+							            <div class="pos-recepit-title" style="height: 100%!important;width:100%!important;">
+								            <div>
+								            	<center>
+								            			<span>سوق الجبيل لتجارة الأسماك</span>
+								            			<span style="color:red;">الشارقة</span>
+								            	</center>
+								            	<center>
+								            			<span>SOUQ AL JUBAIL FISH TR</span>
+								            			<span style="color:red;">Al Dhaid</span>
+								            	</center>
+								            </div>
+								            <div class="receipt-phone" style='text-align:center'>
+								                Phone: <t t-esc="widget.pos.company.phone || ''"/>
+								            </div>
+								            <t t-if="trn">
+								            	<span style="margin: 2px 0px;"><center> TRN : <t t-esc="trn"/></center></span>
+								            </t>
+							            </div>
+		                            </th>
+			                        <th style="width: 100%;text-align: right;">
+							            <div class="pos-recepit-logo" style="height: 100%!important;width:100%!important;">
+								            <img src="/pos_receipt/static/src/img/logo_new_sqad.png" class="pos-recepit-logo-img" style="height: 100%!important;" />
+							            </div>
+			                        </th>
+			                    </tr>
+			                </thead>
+			            </t>
+
+						<t t-if="widget.pos.company.company_short_code == 'SQKL'">
+			                <thead>
+			                    <tr>
+		                            <th style="width: 70%;text-align: center;">
+							            <div class="pos-recepit-title" style="height: 100%!important;width:100%!important;">
+								            <div>
+								            	<center>
+								            			<span>سوق الجبيل لتجارة الأسماك</span>
+								            			<span style="color:red;">الشارقة</span>
+								            	</center>
+								            	<center>
+								            			<span>SOUQ AL JUBAIL FISH TR</span>
+								            			<span style="color:red;">Al Kalba</span>
+								            	</center>
+								            </div>
+								            <div class="receipt-phone" style='text-align:center'>
+								                Phone: <t t-esc="widget.pos.company.phone || ''"/>
+								            </div>
+								            <t t-if="trn">
+								            	<span style="margin: 2px 0px;"><center> TRN : <t t-esc="trn"/></center></span>
+								            </t>
+							            </div>
+		                            </th>
+			                        <th style="width: 100%;text-align: right;">
+							            <div class="pos-recepit-logo" style="height: 100%!important;width:100%!important;">
+								            <img src="/pos_receipt/static/src/img/logo_new_sqkl.png" class="pos-recepit-logo-img" style="height: 100%!important;" />
+							            </div>
+			                        </th>
+			                    </tr>
+			                </thead>
+			            </t>
+	                </thead>
+	            </table>
+	            <t t-if="receipt.header">
+	                <div style='text-align:center;'>
+	                    <t t-esc="receipt.header" />
+	                </div>
+	            </t>
+	            <t t-if="l > 0 and widget.pos.config.duplicate_receipt_header">
+	                <div style='text-align:center'>
+	                    <t t-esc="widget.pos.config.duplicate_receipt_header" />
+	                </div>
+	            </t>
+	            <!-- <div class="pos-center-align"> <t t-esc="order.name"/></div> -->
+	            <t t-if="widget.pos.get_client()">
+		            <div class="receipt-user">
+		                Customer: <t t-esc="order.get_client_name()"/>
+		            </div>
+	            	<t t-if="widget.pos.get_client().vat">
+	            		<div class="receipt-user">
+							TRN: <t t-esc="widget.pos.get_client().vat"/>
+	            		</div>
+	        		</t>
+	        	</t>
+	            <table class="pos-recepit-wd-cstm">
+	                <thead>
+	                    <tr>
+	                        <th style="width: 60%;">
+	                        	<!-- <strong>Item Name</strong> -->
+	                        </th>
+                            <th style="width: 20%;text-align: right;">
+                            	<!-- <strong>Qty</strong> -->
+                            </th>
+                            <th style="width: 20%;text-align: right;">
+                            	<!-- <strong>Total</strong> -->
+                            </th>
+	                    </tr>
+	                </thead>
+	                <tbody>
+	                	<tr style="width: 100%;">
+	                       <td colspan="3" style="border-top: 1px solid black;border-bottom: 1px solid black;text-align:center;">
+	                       		<strong style="margin:0px;">TAX INVOICE / فاتورة ضريبية</strong>
+	                       </td>
+		                </tr>
+					    <t t-set="groupedorderlines_by_shop" t-value="order.get_groupedorderlines_by_shop(orderlines)"/>
+	                    <t t-foreach="groupedorderlines_by_shop" t-as="ln">
+					    	<t t-set="shop_name" t-value="ln"/>
+					    	<t t-set="posorderlines" t-value="ln_value"/>
+		                    <tr style="width: 100%;">
+	                            <td colspan="3" class="receipt-shop-name">
+	                            	<span style="margin:0px;"><span t-esc="shop_name"/></span>
+	                            </td>
+		                    </tr>
+					    	<t t-set="posorderlines" t-value="order.get_orderlines_sort_by_cutting(posorderlines)"/>
+	                    	<t t-foreach="posorderlines" t-as="orderline">
+		                    	<tr t-if="orderline.get_product().arabic_name">
+		                        	<td colspan="3">
+		                        		<span t-esc="orderline.get_product().arabic_name" />
+		                        	</td>
+		                        </tr>
+		                        <tr>
+		                            <td>
+		                            	<i t-if="orderline.is_cutting_service" class="fa fa-scissors" style="font-size:13px;font-weight: 900!important;" />
+		                                <span style="font-weight: 900!important;margin:0px;"><t t-esc="orderline.get_product().display_name"/> </span>
+		                            </td>
+		                            <td style="text-align: right;">
+		                                <span style="margin:0px;">
+		                                	<t t-if="!orderline.get_grillqty()">
+		                                		<!-- <span t-esc="widget.format_currency_no_symbol(orderline.get_quantity_str_with_unit())"/> -->
+		                                		<span t-esc="widget.format_currency_no_symbol(orderline.get_quantity_str())"/>
+		                                	</t>
+		                                	<t t-if="orderline.get_grillqty()">
+		                                		<span><t t-esc="orderline.get_grillnqty()" /> X <t t-esc="orderline.get_grillqty().display_name" /></span>
+		                                	</t>
+		                                </span>
+		                            </td>
+		                            <!-- Original -->
+		                            <!-- <td style="font-size: 14px;font-weight: 900!important;text-align: right;">
+		                            	<span style="margin:0px;" t-esc="widget.format_currency_no_symbol(orderline.get_price_with_tax())"/>
+		                            </td> -->
+
+		                            <t t-if="orderline.get_discount() == 0">
+		                            <td style="font-size: 14px;font-weight: 900!important;text-align: right;">
+		                            	<span style="margin:0px;" t-esc="widget.format_currency_no_symbol(orderline.get_price_with_tax())"/>
+		                            </td>
+		                        	</t>
+		                            <t t-if="orderline.get_discount() &gt; 0">
+		                            <td style="font-size: 14px;font-weight: 900!important;text-align: right;">
+		                            	<span style="margin:0px;" t-esc="widget.format_currency_no_symbol(orderline.get_unit_price() * orderline.get_quantity())"/>
+		                            </td>
+		                        	</t>
+
+		                        </tr>
+	                          </t>
+	                       </t>
+	                </tbody>
+	            </table>
+	            <table class='receipt-total pos-recepit-wd-cstm'>
+	                <tr>
+	                    <td style="border-top: 1px solid black; width: 80%;"/>
+                        <td style="border-top: 1px solid black; width: 20%;"/>
+	                </tr>
+	                <tr>
+	                    <td style="font-size: 12px;font-weight: 900!important;text-align: left;"><span style="margin:0px;">Subtotal</span></td>
+                    	<td style="font-size: 14px;font-weight: 900!important;text-align: right;">
+	                        <span style="margin:0px;"><t t-esc="widget.format_currency_no_symbol(order.get_subtotal() + order.get_total_discount() + order.get_orderlines_only_credit_amount())"/></span>
+	                    </td>
+	                </tr>
+	                <tr t-if="order.get_total_discount() != 0">
+						<t t-set="discount_amt" t-value="widget.format_currency_no_symbol(order.get_total_discount())"/>
+						<t t-set="sub_total" t-value="widget.format_currency_no_symbol(order.get_subtotal() + order.get_total_discount() + order.get_orderlines_only_credit_amount())"/>
+	                    <td style="font-size: 12px;font-weight: 900!important;text-align: left;"><span style="margin:0px;">Discount/خصم*</span></td>
+                    	<td style="font-size: 14px;font-weight: 900!important;text-align: right;">
+	                        <t t-if="order.get_total_discount() > 0">
+								- <span style="margin:0px;"><t t-esc="widget.format_currency_no_symbol(order.get_total_discount())"/></span>
+							</t>
+							<t t-if="order.get_total_discount() &lt; 0">
+								<span style="margin:0px;"><t t-esc="widget.format_currency_no_symbol(order.get_total_discount())"/></span>
+							</t>
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <td style="font-size: 12px;font-weight: 900!important;text-align: left;"><span style="margin:0px;">المجموع الكلي شاملا ض.ق.م.</span></td>
+                    	<td style="font-size: 14px;font-weight: 900!important;text-align: right;"></td>
+	                </tr>
+	                <tr>
+	                    <td style="font-size: 12px;font-weight: 900!important;text-align: left;"><span style="margin:0px;">Total Incl. VAT (AED)</span></td>
+                    	<td style="font-size: 14px;font-weight: 900!important;text-align: right;">
+	                        <span style="margin:0px;"><t t-esc="widget.format_currency_no_symbol(order.get_total_with_tax() + order.get_orderlines_only_credit_amount())"/></span>
+	                    </td>
+	                </tr>
+	                <t t-if="order.get_orderlines_only_credit_amount() > 0">
+						<tr>
+							<td>
+							<div style="float:left;margin:auto;">
+								Credit Note (AED)
+							</div>
+							</td>
+							<td class="pos-right-align">
+							<span style="margin:0px;"> <t t-esc="widget.format_currency_no_symbol(order.get_orderlines_only_credit_amount())"/></span>
+							</td>
+						</tr>
+					</t>
+					<t t-if="order.get_orderlines_only_credit_amount() > 0">
+						<tr t-if="order.get_orderlines_only_credit_amount() &lt; order.get_total_with_tax()">
+							<td style="font-size: 12px;font-weight: 900!important;text-align: left;"><span style="margin:0px;">Balance to Pay Incl. VAT (AED)</span></td>
+							<td style="font-size: 14px;font-weight: 900!important;text-align: right;">
+								<span style="margin:0px;"><t t-esc="widget.format_currency_no_symbol(order.get_total_with_tax())"/></span>
+							</td>
+						</tr>
+						<tr t-if="order.get_total_with_tax() == 0">
+							<td style="font-size: 12px;font-weight: 900!important;text-align: left;"><span style="margin:0px;">Balance to Pay Incl. VAT (AED)</span></td>
+							<td style="font-size: 14px;font-weight: 900!important;text-align: right;">
+								<span style="margin:0px;"><t t-esc="widget.format_currency_no_symbol(order.get_total_with_tax())"/></span>
+							</td>
+						</tr>
+					</t>
+	            </table>
+	            <table class='receipt-paymentlines pos-recepit-wd-cstm' style="margin: 5px 0px;">
+	                <tbody>
+		                <tr>
+		                    <td style="border-top: 0px solid black; width: 80%;"></td>
+	                        <td style="border-top: 0px solid black; width: 20%;"></td>
+		                </tr>
+		                <t t-foreach="paymentlines" t-as="line">
+		                  <tr>
+		                      <td>
+		                      	<div style="float:left;margin:auto;">
+									<t t-if="!(line.selected_currency and widget.pos.currency.id !== line.selected_currency.id)">
+							         	<t t-if="line.get_type() == 'cash'">
+							         		<t t-esc="'Cash (AED)'"/>
+							         	</t>
+							         	<t t-if="line.get_type() == 'bank'">
+							         		<t t-esc="line.name"/> (<t t-esc="line.get_ccinfo()"/>)
+							         	</t>
+									</t>
+									<t t-if="line.selected_currency and widget.pos.currency.id !== line.selected_currency.id">
+										Cash (<t t-esc="line.selected_currency.name"/>@<t t-esc="widget.format_currency_no_symbol(line.selected_currency.rate)"/>)
+									</t>
+					            </div>
+		                      	<div style="float:right;margin:auto;">
+			                      	<t t-if="line.selected_currency and widget.pos.currency.id !== line.selected_currency.id">
+						              	(<span style="margin:0px;"><t t-esc="widget.format_currency_no_symbol(line.amount_currency)"/></span>
+						              	<span t-esc="line.selected_currency.name"/>)
+						            </t>
+		                      	</div>
+		                      </td>
+		                      <td class="pos-right-align">
+		                      	<span style="margin:0px;"> <t t-esc="widget.format_currency_no_symbol(line.get_amount())"/></span>
+		                      </td>
+		                  </tr>
+		                </t>
+
+	                </tbody>
+	            </table>
+	            <table class='receipt-paymentlines pos-recepit-wd-cstm' style="margin: 5px 0px;">
+	                <thead>
+	                    <tr>
+	                        <th style="width:45%;text-align: left;"></th>
+	                        <th style="width:55%;text-align: right;"></th>
+	                    </tr>
+	                </thead>
+	                <tr style="line-height: 2;margin-top: 2px;">
+	                	<td>Change (AED)</td>
+	                	<td class="pos-left-align">
+	                    	<span style="font-size: 20px;margin:0px;font-weight: 900!important;line-height:0"><span t-esc="widget.format_currency_no_symbol(order.get_change())"/></span>
+	                    </td>
+	                </tr>
+	            </table>
+	            <table class='receipt-paymentlines pos-recepit-wd-cstm' style="margin: 5px 0px;">
+	                <thead>
+	                    <tr>
+	                        <th style="width: 20%; border-top: 1px dashed black;text-align: left;">ض.ق.م.</th>
+	                        <th style="width: 54%; border-top: 1px dashed black;text-align: right;">المجموع الكلي بدون ض.ق.م.</th>
+	                        <th style="width: 26%; border-top: 1px dashed black;text-align: right;">قيمة ض.ق.م.</th>
+	                    </tr>
+	                    <tr>
+	                        <th style="text-align: left;">VAT</th>
+	                        <th style="text-align: right;">Total Excl. VAT</th>
+	                        <th style="text-align: right;">VAT Amount</th>
+	                    </tr>
+	                </thead>
+	                <t t-foreach="order.get_tax_details()" t-as="taxdetail">
+	                    <tr>
+	                        <td style="text-align: left;">
+	                        	<t t-esc="taxdetail.name" />
+	                        </td>
+	                        <td style="text-align: right;">
+	                        	<span style="margin:0px;"><t t-esc="widget.format_currency_no_symbol(order.get_total_without_tax())" /></span><!-- Fails if we have different tax rate on products -->
+	                        </td>
+	                        <td style="text-align: right;">
+	                        	<span style="margin:0px;"><t t-esc="widget.format_currency_no_symbol(taxdetail.amount)" /></span>
+	                        </td>
+	                    </tr>
+	                </t>
+                    <tr>
+                        <td style="border-top: 1px dashed black;"></td>
+                        <td style="border-top: 1px dashed black;"></td>
+                        <td style="border-top: 1px dashed black;"></td>
+                    </tr>
+	            </table>
+	            <table class='receipt-paymentlines pos-recepit-wd-cstm' style="margin: 5px 0px;">
+	                <thead>
+	                    <tr>
+	                        <td style="width: 30%; text-align: left;">Date</td>
+	                        <td style="width: 30%; text-align: left;">Time</td>
+	                        <td style="width: 40%; text-align: left;">Counter</td>
+	                    </tr>
+	                </thead>
+	                 <tr>
+	               		 <td style="text-align: left;">
+	                      	 <span style="margin:0px;"><t t-esc="order.get_validation_date()"/></span>
+	                     </td>
+	                     <td style="text-align: left;">
+	                      	 <span style="margin:0px;"><t t-esc="order.get_validation_time()"/></span>
+	                     </td>
+	                     <td style="text-align: left;">
+	                      	<span style="margin:0px;"><t t-esc="widget.pos.pos_session.pos_counter_name"/></span>
+	                     </td>
+	                </tr>
+                	<tr>
+                        <td colspan="3" style="text-align: left;border-bottom: 1px dashed black;">
+                        	<span style="margin:0px;">Served By: <t t-esc="widget.pos.get_cashier().name"/></span>
+                         </td>
+                    </tr>
+	            </table>
+	            <table class='receipt-barcode pos-recepit-wd-cstm' style="margin:3px 0px;">
+	                <tr>
+	                    <td style="text-align:center;line-height:0.999;">
+                        	<span style="margin-bottom:1px;">Receipt No</span>
+	                    	<img t-att-src="order.get_barcode_url()" class='receipt-barcode-img' />
+	            			<barcode encoding="EAN13"><t t-esc="order.get_barcode()"/></barcode>
+	           			</td>
+	            	</tr>
+	            </table>
+	            <table t-if="order.get_total_discount() &gt; 0" class="receipt-change pos-recepit-wd-cstm" style="margin: 5px 0px;">
+	                <tr>
+		                <td style="border-top: 1px dashed black;"/>
+		                <td style="border-top: 1px dashed black;"/>
+		                <td style="border-top: 1px dashed black;"/>
+	                </tr>
+	                <tr>
+	                    <td><span style="font-size: 12px;font-weight:900!important;margin:0px;text-align:left;line-height:0">Your Savings</span></td>
+	                    <td class="pos-center-align">
+	                        <span style="font-size: 18px;margin:0px;font-weight: 900!important;line-height:1.5"><span style="font-size: 14px;margin:0px;font-weight: 900!important;"> <t t-esc="widget.format_currency_no_symbol(order.get_total_discount())"/></span></span>
+	                    </td>
+	                    <td><span style="font-size: 12px;font-weight:900!important;margin:0px;text-align:right;line-height:0">لقد وفّرت</span></td>
+	                </tr>
+                    <tr>
+                        <td style="border-top: 1px dashed black;"/>
+                        <td style="border-top: 1px dashed black;"/>
+                        <td style="border-top: 1px dashed black;"/>
+                    </tr>
+                </table>
+                <!-- <div class="pos-recepit-wd-cstm" style="height: 1px;border-top: 1px solid black;"/> -->
+           		<t t-if="order.get_grill_order_lines().length == orderlines.length">
+		            <t t-if="widget.pos.company.grill_receipt_footer">
+		                <div style='text-align:center;line-height:normal;border: 1px solid black;'>
+		                    <t t-raw="widget.pos.company.grill_receipt_footer" />
+		                </div>
+		            </t>
+			    </t>
+			    <t t-if="order.get_grill_order_lines().length == 0">
+        			<t t-if="widget.pos.company.receipt_footer">
+		                <div style='text-align:center;line-height:normal;border: 1px solid black;'>
+		                    <t t-if="receipt.footer">
+				                <br />
+				                <div style='text-align:center'>
+				                    <t t-esc="receipt.footer" />
+				                </div>
+				            </t>
+		                    <t t-raw="widget.pos.company.receipt_footer" />
+		                </div>
+		            </t>
+			    </t>
+			    <t t-if="order.get_grill_order_lines().length > 0 and order.get_grill_order_lines().length != orderlines.length">
+		            <t t-if="widget.pos.company.receipt_footer">
+		                <div style='text-align:center;line-height:normal;border: 1px solid black;'>
+		                    <t t-raw="widget.pos.company.receipt_footer" />
+		                </div>
+		            </t>
+		            <t t-if="widget.pos.company.grill_receipt_footer">
+		                <div style='text-align:center;line-height:normal;border: 1px solid black;'>
+		                    <t t-raw="widget.pos.company.grill_receipt_footer" />
+		                </div>
+		            </t>
+			    </t>
+                <!-- <div class="pos-recepit-wd-cstm" style="height: 1px;border-top: 1px solid black;"/> -->
+	        </div>
+	        <t t-if="l != (no_of_print_recepits-1)">
+	        	<p style="page-break-before:always;" />
+	        </t>
+		</t>
+		<!-- Cutting -->
+		<t t-set="no_of_print_cut" t-value="widget.pos.config.no_of_print_cut"/>
+		<t t-set="cutting_orderlines" t-value="order.get_cutting_orderlines(orderlines)"/>
+    	<t t-if="cutting_orderlines.length > 0">
+        <t t-foreach="no_of_print_cut" t-as="p_c">
+	        <div class="pos-sale-ticket">
+                <div style='text-align:center;'>
+                    <strong style="margin: 3px 0px;font-size: 13px;font-weight: 900!important;">Cutting/Cleaning Service</strong>
+                </div>
+	            <div class="pos-center-align"><t t-esc="order.name"/></div>
+	            <div class="pos-center-align"><t t-esc="order.formatted_validation_date"/></div>
+	            <t t-if="widget.pos.get_client()">
+		            <div class="receipt-user">
+		                Customer: <t t-esc="order.get_client_name()"/>
+		            </div>
+	        	</t>
+	            <table class="pos-recepit-wd-cstm">
+	                <thead>
+	                    <tr>
+	                        <th style="width: 60%;" />
+                            <th style="width: 20%;text-align: right;" />
+                            <th style="width: 20%;text-align: right;" />
+	                    </tr>
+	                </thead>
+	                <tbody>
+					    <!-- <t t-set="groupedorderlines_by_shop" t-value="order.get_groupedorderlines_by_shop(orderlines)"/>  -->
+					    <t t-set="groupedcuttingorderlines_by_shop" t-value="order.get_groupedorderlines_by_shop(cutting_orderlines)"/>
+	                	<t t-foreach="groupedcuttingorderlines_by_shop" t-as="ln">
+					    	<t t-set="shop_name" t-value="ln"/>
+					    	<t t-set="posorderlines" t-value="ln_value"/>
+	                		<!-- <t t-set="shop_cutting_orderlines" t-value="order.get_cutting_orderlines(posorderlines)"/> -->
+	                		<t t-foreach="posorderlines" t-as="orderline">
+			                    <tr>
+			                        <td>
+			                            <span style="margin:0px;"><t t-esc="orderline.get_product().display_name"/> </span>
+			                        </td>
+			                        <td style="text-align: right;">
+			                        	<span style="margin:0px;" t-esc="widget.format_currency_no_symbol(orderline.get_quantity_str())"/>
+			                        </td>
+			                        <td style="text-align: right;">
+			                        	<span style="margin:0px;" t-esc="widget.format_currency_no_symbol(orderline.get_price_with_tax())"/>
+			                        </td>
+			                    </tr>
+		                    </t>
+	                    </t>
+	                </tbody>
+	            </table>
+	            <!-- <table class='receipt-barcode pos-recepit-wd-cstm' style="margin:3px 0px;">
+	                <tr>
+	                    <td style="text-align:center;line-height:0.9;">
+	                    	<img t-att-src="order.get_barcode_url()" class='receipt-barcode-img' />
+	            			<barcode encoding="EAN13"><t t-esc="order.get_barcode()"/></barcode>
+	           			</td>
+	            	</tr>
+	            </table> -->
+		    </div>
+	        <t t-if="l != (no_of_print_cut-1)">
+	        	<p style="page-break-after:always;" />
+	        </t>
+	    </t>
+    	</t>
+		<!-- KOT -->
+		<t t-set="no_of_print_kot" t-value="widget.pos.config.no_of_print_kot"/>
+		<t t-if="widget.pos.config.company_id[0] != 3">
+			<t t-if="order.get_sauce_rice_grill_order_lines().length > 0 and order.get_grill_oven_order_lines().length == 0">
+				<t t-set="no_of_print_kot" t-value="3"/>
+			</t>
+			<t t-if="order.get_fry_order_lines().length > 0 and order.get_grill_oven_order_lines().length == 0 and order.get_radah_baked_grill_order_lines().length == 0">
+				<t t-set="no_of_print_kot" t-value="5"/>
+			</t>
+			<t t-if="order.get_radah_baked_grill_order_lines().length > 0 and order.get_grill_oven_order_lines().length == 0 and order.get_fry_order_lines().length == 0">
+				<t t-set="no_of_print_kot" t-value="5"/>
+			</t>
+		</t>
+    	<t t-if="order.get_grill_order_lines().length > 0 or order.get_ready_to_eat_order_lines().length > 0 or order.get_breakfast_order_lines().length > 0">
+
+        <t t-foreach="no_of_print_kot" t-as="k">
+	        <div class="pos-sale-ticket">
+	            <t>
+	                <div style='text-align:center;'>
+	                    <p style="margin: 3px 0px;">KOT Customer Copy Grill/Marination/Receiver</p>
+	                </div>
+	            </t>
+	            <div class="pos-center-align"> <h1 style="font-size: 13px;font-weight: 900;margin:0px;line-height:1.5"><t t-esc="order.name"/></h1></div>
+	            <t t-if="widget.pos.get_client()">
+		            <div class="receipt-user">
+		                Customer: <t t-esc="order.get_client_name()"/>
+		            </div>
+	        	</t>
+	            <div class="receipt-user">
+	                <h1 style="font-size: 13px;font-weight: 900;margin:0px;line-height:1.5; text-align:center;">Order Date : <t t-esc="order.get_validation_date()"/></h1>
+	            </div>
+	          	<div class="receipt-user">
+	                <h3 style="font-size: 18px;font-weight: 900;margin:0px;line-height:1.5; text-align:center;">Order Time: <t t-esc="order.get_validation_time()"/></h3>
+	            </div>
+	            <table class="pos-recepit-wd-cstm">
+	                <thead>
+	                    <tr>
+	                        <th style="width: 35%; border-bottom: 1px solid black;"><strong></strong></th>
+                            <th style="width: 25%; border-bottom: 1px solid black;text-align: right;"><strong></strong></th>
+                            <th style="width: 15%; border-bottom: 1px solid black;text-align: right;"><strong></strong></th>
+                            <th style="width: 25%; border-bottom: 1px solid black;text-align: right;"><strong></strong></th>
+	                    </tr>
+	                </thead>
+	                <tbody>
+					<t t-foreach="order.get_breakfast_order_lines()" t-as="breakfast">
+                        <tr style="width: 100%;">
+                            <td colspan="5">
+                        		<div class="row">
+                        			<div style="width: 50%;float: left;">
+										<span style="font-size: 16px;margin:0px;"><t t-esc="breakfast.name"/></span>
+<!--										<t t-if="orderline.get_product().arabic_name"> / <span t-esc="orderline.get_product().arabic_name"/></t></span>-->
+                        			</div>
+                        			<div style="width: 50%;float: right;text-align: right;">
+                        				<t t-if="breakfast['breakfast']">
+											<h1 style="font-size:13px;font-weight: 700;margin:0px;line-height:2;"><span t-esc="breakfast['qty']"/> Order(s)</h1>
+                        				</t>
+                        			</div>
+									<div>
+										<span>Note : <t t-esc="breakfast['note']"></t></span>
+									</div>
+                        		</div>
+                        	  </td>
+						</tr>
+					</t>
+					<t t-foreach="order.get_ready_to_eat_order_lines()" t-as="readyline">
+                        <tr style="width: 100%;">
+                            <td colspan="5">
+                        		<div class="row">
+                        			<div style="width: 50%;float: left;">
+										<span style="font-size: 16px;margin:0px;"><t t-esc="readyline.name"/></span>
+<!--										<t t-if="orderline.get_product().arabic_name"> / <span t-esc="orderline.get_product().arabic_name"/></t></span>-->
+                        			</div>
+                        			<div style="width: 50%;float: right;text-align: right;">
+                        				<t t-if="readyline['ready_to_eat']">
+											<h1 style="font-size:13px;font-weight: 700;margin:0px;line-height:2;"><span t-esc="readyline['qty']"/> Order(s)</h1>
+                        				</t>
+                        			</div>
+									<div>
+										<span>Note : <t t-esc="readyline['note']"></t></span>
+									</div>
+                        		</div>
+                        	  </td>
+						</tr>
+					</t>
+                	<t t-foreach="order.get_grill_order_lines()" t-as="orderline">
+                        <tr style="width: 100%;">
+                            <td colspan="5">
+                        		<div class="row">
+                        			<div style="width: 50%;float: left;">
+                        				<span style="font-size: 16px;margin:0px;"><t t-esc="orderline.get_product().display_name"/>
+		                                <t t-if="orderline.get_product().arabic_name"> / <span t-esc="orderline.get_product().arabic_name"/></t></span>
+										<t t-if="orderline.get_medium_level()">:<span t-esc="orderline.get_medium_level()" /></t>
+                        			</div>
+                        			<div style="width: 50%;float: right;text-align: right;">
+                        				<t t-if="!orderline.get_grillqty() and !orderline['is_ready_to_eat']">
+											<h1 style="font-size:13px;font-weight: 700;margin:0px;line-height:2;"><span t-esc="widget.format_currency_no_symbol(orderline.get_quantity_str_with_unit())"/></h1>
+                        				</t>
+										<t t-if="orderline.get_grillqty()">
+			                                <h1 style="font-size: 13px;font-weight: 700;margin:0px;line-height:2;">
+			                                	<span><t t-esc="orderline.get_grillnqty()" /> X <t t-esc="orderline.get_grillqty().display_name" /></span>
+			                                </h1>
+		                            	</t>
+                        			</div>
+                        		</div>
+                        	  </td>
+						</tr>
+                         <tr>
+                         	<td colspan="5">
+                         		<div class="row">
+                         			<t t-if="!orderline.get_product().consumable_bom">
+	                                <h1 style="font-size: 13px;font-weight: 900;margin:0px;line-height:1.5;"><t t-if="orderline.get_marinade()"><span t-esc="orderline.get_marinade().display_name"/></t></h1>
+	                                <t t-set="addons" t-value="orderline.get_addons()" />
+						            <t t-if="addons !== 'undefined' and addons.length > 0">
+						                 <li class="info line-addons">
+						                     <t t-esc="orderline.get_addon_filling_heading()"/>
+						                     <span>
+						                        <t t-foreach="addons" t-as="addon">
+						                            <h1 style="font-size: 13px;margin:0px;line-height:1.5;"><t t-esc="addon.display_name" /> @ <t t-esc="addon.product_tmpl_lst_price" /> ,</h1>
+						                        </t>
+						                     </span>
+						                 </li>
+						            </t>
+	                            	</t>
+                         		</div>
+
+                         	</td>
+                         </tr>
+                         <tr>
+                         	<td colspan="5">
+                         		<div class="row">
+                         			<t t-if="orderline.get_fishname()">
+	                                <h1 style="font-size: 13px;font-weight: 900;margin:0px;line-height:1.5;"><span t-esc="orderline.get_fishname().name"/></h1>
+	                            	</t>
+                         		</div>
+
+                         	</td>
+                         </tr>
+
+                         <tr>
+                         	<td colspan="5">
+                         		<div class="row">
+                         			<t t-if="orderline.get_kitchennotes()">
+	                                <t t-set="kitchennotes" t-value="orderline.get_kitchennotes()" />
+	 								<t t-if="kitchennotes !== 'undefined' and kitchennotes.length > 0">
+	 								<h1 style="font-size: 13px;font-weight: 900;margin:0px;line-height:1.5;text-decoration:underline;">Kitchen Note :</h1>
+	                                <t t-foreach="kitchennotes" t-as="kitchennote">
+	                                <h1 style="font-size: 13px;font-weight: 700;margin:0px;line-height:1.5"><t t-if="kitchennote">
+	                                	<span t-esc="kitchennote.name"/></t></h1>
+	                                </t>
+	                            	</t>
+	                                </t>
+                         		</div>
+                         	</td>
+                         </tr>
+                         <tr>
+                         	<td colspan="5">
+                         		<div class="row">
+                         			<t t-if="orderline.get_grillnote()">
+	                                <!-- <h1 style="font-size: 13px;font-weight: 900;margin:0px;line-height:1.5;text-decoration:underline;">Custom :</h1> -->
+	                                <h1 style="font-size: 14px;font-weight: 700;margin:0px;line-height:1.5"><span t-esc="orderline.get_grillnote()"/></h1>
+	                            	</t>
+                         		</div>
+                         	</td>
+                         </tr>
+                        <tr>
+	                        <td style="border-top: 1px solid black;"/>
+	                        <td style="border-top: 1px solid black;"/>
+	                        <td style="border-top: 1px solid black;"/>
+	                        <td style="border-top: 1px solid black;"/>
+        				</tr>
+                    </t>
+	                </tbody>
+	            </table>
+
+	        	<t t-if="order.get_delivery_date()">
+	            	<h6 style="font-size: 16px;font-weight: 900;margin: 5px 0px;text-align:center;line-height:1;">Pick up @ <t t-esc="order.get_delivery_date().weekday"/></h6>
+	            	<h6 style="font-size: 16px;font-weight: 900;margin: 5px 0px;text-align:center;line-height:1;"><t t-esc="order.get_delivery_date().date_long"/></h6>
+	            	<div style="border-top: 1px solid black;"/>
+	        	</t>
+	            <!-- <t t-set="kot_no" t-value="order.get_barcode_token()"/> -->
+	            <t t-set="kot_no" t-value="order.get_grill_sequence_number()"/>
+	            <t t-set="counter_no" t-value="widget.pos.pos_session.pos_counter_name.split('-')"/>
+	            <h6 style="font-size: 35px;font-weight: 900;margin: 5px 0px;text-align:center;line-height:1;">
+	            	#<span t-esc="kot_no"/>
+					<t t-set="date_of_order" t-value="order.get_validation_date()"/>
+					<t t-set="date_of_receive" t-value="order.get_current_date()"/>
+					<!-- <t t-if="date_of_receive != date_of_order">(OLD)</t> -->
+	            	<!-- #<span t-esc="counter_no[2][0]"/>-<span t-esc="counter_no[2][1]"/><span t-esc="kot_no"/> -->
+	            </h6>
+	            <br/>
+	            <table class='receipt-barcode pos-recepit-wd-cstm'>
+	                <tr>
+	                    <td style="text-align:center;">
+	                    	<img t-att-src="order.get_barcode_url()" class='receipt-barcode-img' />
+	            			<barcode encoding="EAN13"><t t-esc="order.get_barcode()"/></barcode>
+	           			</td>
+	            	</tr>
+	            </table>
+
+		        </div>
+		        <t t-if="l != (no_of_print_kot-1)">
+		        	<p style="page-break-after:always;" />
+		        </t>
+	        </t>
+
+    	</t>
+    </t>
+
+</templates>

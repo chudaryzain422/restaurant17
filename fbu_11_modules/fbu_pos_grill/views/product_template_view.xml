@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- <record id="product_template_only_form_view_grill"
+            model="ir.ui.view">
+            <field name="name">product.template.product.form.grill</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id"
+                ref="product.product_template_only_form_view" />
+            <field name="arch" type="xml">
+                <field name="to_weight" position="after">
+                    <field name="grill_service" />
+                    <field name="pos_grill_method_id"
+                        attrs="{'invisible':[('grill_service','!=', True)],
+                                'required':[('grill_service','=', True)]}" />
+                </field>
+            </field>
+        </record> -->
+
+
+        <record id="product_template_form_view_pos_grill"
+                model="ir.ui.view">
+            <field name="name">product.template.form.inherit.grill</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id"
+                   ref="point_of_sale.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <field name="to_weight" position="after">
+                    <field name="pos_grill_price_id"/>
+                    <field name="consumable_bom"
+                           invisible="grill_service == True"/>
+                    <field name="pos_grill_qty_ids"
+                           invisible="consumable_bom != True"
+                           widget="many2many_tags" domain="[('product_tmpl_ids', 'in', (active_id,))]"/>
+                    <field name="grill_service"
+                           invisible="consumable_bom == True"/>
+                    <field name="grill_min_qty"
+                           invisible="grill_service != True"/>
+                    <field name="pos_grill_method_id"
+                           invisible="grill_service != True"
+                           required="grill_service == True"/>
+                    <field name="ready_to_eat"/>
+                    <field name="breakfast"/>
+                </field>
+                <field name="pos_categ_ids" position="attributes">
+                    <attribute name="invisible">available_in_pos == False</attribute>
+                    <attribute name="required">grill_service == True or consumable_bom == True</attribute>
+            </field>
+        </field>
+    </record>
+
+</data>
+        </odoo>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="PosCartTicket">
+        <div class="pos_cart-sale-ticket" style="line-height: 1.3em;font-size: 12px;">            
+            <div class="pos_cart-center-align">Cart Receipt <t t-esc="order.formatted_validation_date"/></div>
+            <div class="pos_cart-center-align"><t t-esc="order.name"/></div>
+            <br />
+            <t t-esc="widget.pos_cart.company.name"/><br />
+            <div class="receipt-phone">
+                Phone: <t t-esc="widget.pos_cart.company.phone || ''"/><br />
+            </div>
+            <div class="receipt-user">
+                User: <t t-esc="widget.pos_cart.get_cashier().name"/><br />
+            </div>
+            <div class="receipt-user">
+                Shop: <t t-esc="widget.pos_cart.config.name"/><br />
+            </div>
+            <br />
+            <t t-if="receipt.header">
+                <div style='text-align:center'>
+                    <t t-esc="receipt.header" />
+                </div>
+                <br />
+            </t>
+            <table class='receipt-orderlines' style="width: 95%!important;">
+                <thead>
+                    <tr>
+	                    <th style="width: 55%; "></th>
+	                    <th style="width: 25%;text-align: right;"></th>
+	                    <th style="width: 20%;text-align: right"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr t-foreach="orderlines" t-as="orderline">
+                    <td style="word-wrap: break-word;">
+                        <t t-esc="orderline.get_product().display_name"/>
+                    </td>                  
+                    <td style="font-size:15px;text-align: right;">
+                        <t t-esc="orderline.get_quantity_str_with_unit()"/>
+                    </td>
+                    <!-- Original -->
+                    <!-- <td style="text-align: right;font-size:15px;">
+                        <t t-esc="widget.format_currency_no_symbol(orderline.get_unit_display_price() * orderline.get_quantity())"/>
+                    </td> -->
+
+                    <t t-if="orderline.get_discount() == 0">
+                    <td style="text-align: right;font-size:15px;">
+                        <t t-esc="widget.format_currency_no_symbol(orderline.get_unit_display_price() * orderline.get_quantity())"/>
+                    </td>
+                    </t>
+                    <t t-if="orderline.get_discount() &gt; 0">
+                    <td style="text-align: right;font-size:15px;">
+                        <t t-esc="widget.format_currency_no_symbol(orderline.get_unit_price() * orderline.get_quantity())"/>
+                    </td>
+                    </t>
+
+                </tr>
+                <tr >
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr> 
+                <tr>
+                    <td style="border-top: 1px solid black; width: 55%;"></td>
+                    <td style="border-top: 1px solid black; width: 25%;"></td>
+                    <td style="border-top: 1px solid black; width: 20%;"></td>
+                </tr>
+                <tr >
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr> 
+                </tbody>
+            </table>
+            <table class='receipt-total' style="width: 95%!important;">
+                <thead>
+                    <tr>
+	                    <th style="width: 50%; "></th>
+	                    <th style="width: 15%;text-align: right;"></th>
+	                    <th style="width: 35%;text-align: right"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr >
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr style="font-size:14px;">
+                    <td colspan="2">Subtotal:</td>
+                    <td style="text-align: right">
+                        <t t-esc="widget.format_currency_no_symbol(order.get_subtotal() + order.get_total_discount())"/>
+                    </td>
+                </tr>
+                <t t-if="order.get_total_discount() &gt; 0">
+                    <tr style="font-size:14px;">
+                        <td colspan="2">Discount خصم* :</td>
+                        <td style="text-align: right">
+                            - <t t-esc="widget.format_currency_no_symbol(order.get_total_discount())"/>
+                        </td>
+                    </tr>
+                </t>
+                <tr style="font-size:16px;">
+                    <td colspan="2" style="font-weight: 900;">Total Incl. VAT (AED):</td>
+                    <td style="text-align: right; font-weight: 900;">
+                        <t t-esc="widget.format_currency_no_symbol(order.get_total_with_tax())"/>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <br />
+            <table class='receipt-barcode'>
+                <tr>
+                    <td style="text-align:center;">
+                    	<img t-att-src="order.get_barcode_url()" class='receipt-barcode-img' />
+            			<barcode encoding="EAN13"><t t-esc="order.get_barcode()"/></barcode>
+           			</td>
+            	</tr>
+            </table>
+            <br />
+            <t t-if="receipt.footer">
+                <br />
+                <div style='text-align:center'>
+                    <t t-esc="receipt.footer" />
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

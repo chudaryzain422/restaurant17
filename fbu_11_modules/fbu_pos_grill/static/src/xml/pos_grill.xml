@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="GrillButton">
+        <!-- <span class="order-button grill-button">
+            <i class="fa fa-cutlery" />
+            <span>Grill Order</span>
+        </span> -->
+    </t>
+
+    <t t-name="GrillMethodButton">
+        <span class='grill_method-button js-grill_method-switch' t-att-data-grill_method-id="grill_method.id">
+            <div class="grill_method-img">
+                <img t-att-src="image_url"/>
+            </div>
+            <div class="grill_method-name">
+                <t t-esc="grill_method.name"/>
+            </div>
+        </span>
+    </t>
+
+    <t t-name="GrillMarinadeButton">
+    	<t t-if="marinade">
+	   		<div t-attf-class="btn marinades marinade-line #{
+	   				(grill_line and grill_line.get_marinade()
+	   				and grill_line.get_marinade().id === marinade.id)
+	   				? 'highlight' : '' }"
+                 t-att-data-marinade-id="marinade.id"
+                 t-att-data-grill-line="grill_line ? grill_line.id : null">
+				<span t-esc="marinade.display_name"/>
+	   		</div>
+   		</t>
+    </t>
+
+    <t t-name="GrillMethodSimpleButton">
+    	<t t-if="grillmethod">
+            <div t-attf-class="btn grill-methods grill-method-line #{
+	   				(grill_line and grill_line.get_grillmethod()
+	   				and grill_line.get_grillmethod().id === grillmethod.id)
+	   				? 'highlight' : '' }"
+                 t-att-data-grillmethod-id="grillmethod.id"
+                 t-att-data-grill-line="grill_line ? grill_line.id : null">
+				<span t-esc="grillmethod.name"/>
+	   		</div>
+   		</t>
+    </t>
+
+    <t t-name="AddonButton">
+        <t t-if="addon">
+            <t t-set="check_addons" t-value="0"/>
+            <t t-if="grill_line">
+                <t t-set="check_addons" t-value="grill_line.check_addons(addon)"/>
+            </t>
+            <div t-attf-class="btn addons addons-line #{
+                    (grill_line and check_addons)
+                    ? 'highlight' : '' }"
+                 t-att-data-addons-id="addon.id"
+                 t-att-data-grill-line="grill_line ? grill_line.id : null"
+                 t-att-data-addons-name="addon.name">
+                <t t-esc="addon.display_name"/>
+                @
+                <t t-esc="addon.product_tmpl_lst_price"/>
+            </div>
+        </t>
+    </t>
+
+    <t t-name="KitchenNoteButton">
+    	<t t-if="kitchennote">
+	        <t t-set="check_kitchennotes" t-value="0"/>
+            <t t-if="grill_line">
+	        	<t t-set="check_kitchennotes" t-value="grill_line.check_kitchennotes(kitchennote)"/>
+	        </t>
+            <div t-attf-class="btn kitchennotes kitchennote-line #{
+	   				(grill_line and check_kitchennotes)
+	   				? 'highlight' : '' }"
+                 t-att-data-kitchennote-id="kitchennote.id"
+                 t-att-data-grill-line="grill_line ? grill_line.id : null"
+                 t-att-data-kitchennote-name="kitchennote.name">
+				<t t-esc="kitchennote.display_name"/>
+	   		</div>
+   		</t>
+    </t>
+
+
+    <t t-name="GrillNoteButton">
+		<div class="grill-note">
+			<table class="layout-table">
+		     	<tr>
+		     		<td style="padding:10px!important;">
+		           		<div class="grill-note-detail" t-att-data-grill-line="grill_line ? grill_line.id : null">
+					 		<textarea rows="1" cols="44"
+                                      t-att-data-grill-line="grill_line ? grill_line.id : null"
+                                      placeholder="Grill Note"
+                                      class="text-grill-note"><t t-esc="grill_note || '' " /></textarea>
+						</div>
+		          	</td>
+		      	</tr>
+			</table>
+		</div>
+    </t>
+
+    <t t-name="GrillBreakfastInputWidget">
+		<div class="grill-note">
+			<table class="layout-table">
+               <div class="grill-note-detail" t-att-data-grill-line="grill_line ? grill_line.id : null">
+                                         <input t-att-data-grill-line="grill_line ? grill_line.id : null" type="hidden"
+                                                value="" id="egg_done_value"/>
+
+                   <div class="grill-view-radio">
+
+                  <input class="grill-view-radio-input" t-att-data-grill-line="grill_line ? grill_line.id : null"
+                         value="Soft" id="egg_done_level_1" name="egg_done_level" type="radio">Soft</input>
+                       <input class="grill-view-radio-input" t-att-data-grill-line="grill_line ? grill_line.id : null"
+                              value="Medium" id="egg_done_level_2" name="egg_done_level" type="radio">Medium</input>
+                       <input class="grill-view-radio-input" t-att-data-grill-line="grill_line ? grill_line.id : null"
+                              value="Well done" id="egg_done_level_3" name="egg_done_level"
+                              type="radio">Well done</input>
+
+                  </div>
+
+
+               </div>
+            </table>
+		</div>
+    </t>
+
+    <t t-name="GrillQtyButton">
+    	<t t-if="grillqty">
+	   		<div t-attf-class="btn grill-qty grill-qty-line #{
+	   				(grill_line and grill_line.get_grillqty()
+	   				and grill_line.get_grillqty().id === grillqty.id)
+	   				? 'highlight' : '' }"
+                 t-att-data-grillqty-id="grillqty.id"
+                 t-att-data-grill-line="grill_line ? grill_line.id : null">
+				<span t-esc="grillqty.display_name"/>
+	   		</div>
+   		</t>
+    </t>
+
+
+    <t t-name="ScaleScreen-Fishnames">
+        <div class='fishnames'>
+            <t t-foreach="widget.pos.fishnames" t-as="fishname">
+                <div class="button fishname fish"
+                     style="width: 12%!important; border-top-width:0px!important;margin:1%!important;height:5%;font-size: 15px;font-weight:900;"
+                     t-att-data-id="fishname.id">
+                    <span t-esc="fishname.name"/>
+                </div>
+            </t>
+        </div>
+
+    </t>
+    <t t-extend="ScaleScreenWidget">
+        <t t-jquery="div.buy-product" t-operation="after">
+            <div class="row">
+                <section class='fishnames-container'>
+                </section>
+            </div>
+        </t>
+    </t>
+
+    <!-- Fish -->
+
+
+    <t t-name="GrillNQtyButton">
+		<div class="grill_nqty" style="width:19% !important;padding: 5px !important;">
+       		<div class="pos_cart-grillnqty" t-att-data-grill-line="grill_line ? grill_line.id : null">
+		 		<p style="color: indianred!important;">Enter No of Portions</p>
+                <input type="number" name="grillnqty" min="1" max="50" step="1"
+                       t-att-data-grill-line="grill_line ? grill_line.id : null"
+                       class="text-grillnqty"
+                       placeholder="Enter the n qty"
+                       t-att-value="grill_nqty || 1"/>
+			</div>
+		</div>
+    </t>
+
+    <t t-name="GrillMethodWidget">
+        <div class='grill-method-container'>
+            <div class="grill-method-scroller touch-scrollable">
+                <div class="grill-methods"></div>
+            </div>
+            <span class="placeholder-ScrollbarWidget"/>
+        </div>
+    </t>
+
+    <t t-extend="ProductScreenWidget">
+    	<t t-jquery=".rightpane >.layout-table:eq(0)" t-operation="before">
+	        <div class="grill-table">
+	            <div class="content-row">
+	                <div class="content-cell">
+	                    <div class="content-container">
+	                       <span class="placeholder-GrillMethodWidget"/>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+        </t>
+    </t>
+
+    <t t-extend="Orderline">
+        <t t-jquery="li:first" t-operation="attributes">
+            <attribute name="t-attf-class">#{line.get_line_class()}</attribute>
+        </t>
+        <t t-jquery="li >span.product-name" t-operation="append">
+    		<t t-if="line.get_product().grill_service or line.get_product().consumable_bom">
+            	<i style="margin-left: 20px;" t-attf-class="oe_link_icon fa fa-cutlery oe_icon line-grill-icon"/>
+            </t>
+    	</t>
+        <t t-jquery="ul.info-list li.info:first-child t[t-esc]:eq(2)" t-operation="replace">
+    	 	<t t-if="(line.get_product().grill_service) and (line.get_product_price())">
+            	<t t-esc="widget.format_currency(line.get_product_price(),'Product Price')"/>
+                <t t-if="line.get_product_price() !== line.get_unit_price()">
+            		(Cal - <t t-esc="widget.format_currency(line.get_unit_display_price(),'Product Price')"/>)
+            	</t>
+            </t>
+            <t t-if="(line.get_product().consumable_bom) and (line.get_product_price())">
+                <t t-esc="widget.format_currency(line.get_product_price(),'Product Price')"/>
+                <t t-if="line.get_product_price() !== line.get_unit_price()">
+                    (Cal - <t t-esc="widget.format_currency(line.get_unit_display_price(),'Product Price')"/>)
+                </t>
+            </t>
+            <t t-if="(!line.get_product().consumable_bom) or (!line.get_product().grill_service) or (!line.get_product_price())">
+            	<t t-esc="widget.format_currency(line.get_unit_display_price(),'Product Price')"/>
+            </t>
+    	</t>
+        <t t-jquery="ul.info-list" t-operation="append">
+	         <t t-if="line.get_grillmethod()">
+	             <li class="info grillmethod">
+	                 Cooking Method :
+	                 <em class="info grillmethod">
+	                     <t t-esc="line.get_grillmethod().name"/>
+	                 </em>
+	             </li>
+	         </t>
+            <t t-if="!line.get_product().consumable_bom">
+	         <t t-if="line.get_marinade()">
+	             <li class="info marinade">
+	                 Marinade :
+	                 <em class="info marinade">
+	                     <t t-esc="line.get_marinade().display_name"/>
+	                 </em>
+	             </li>
+	         </t>
+             </t>
+            <t t-if="line.get_fishname()">
+                 <li class="info">
+                     Fish :
+                     <em>
+                         <t t-esc="line.get_fishname().name"/>
+                     </em>
+                 </li>
+             </t>
+            <t t-set="kitchennotes" t-value="line.get_kitchennotes()"/>
+            <t t-if="kitchennotes !== 'undefined' and kitchennotes.length > 0">
+	             <li class="info kitchennote">
+	                 <em class="info kitchennote">
+		                <t t-foreach="kitchennotes" t-as="kitchennote">
+		                	<t t-esc="kitchennote.name"/>
+                            ,
+		                </t>
+	                 </em>
+	             </li>
+
+	         </t>
+            <t t-set="addons" t-value="line.get_addons()"/>
+            <t t-if="addons !== 'undefined' and addons.length > 0">
+                 <li class="info line-addons">
+                     <t t-set="heading" t-value="line.get_addon_filling_heading()"></t>
+                     <span><t t-esc="heading"></t></span>
+                     <em class="info line-addons">
+                        <t t-foreach="addons" t-as="addon">
+                            <t t-esc="addon.display_name"/>
+                            @
+                            <t t-esc="addon.product_tmpl_lst_price"/>
+                            ,
+                        </t>
+                     </em>
+                 </li>
+             </t>
+            <t t-if="line.get_grillnote() != ''">
+                 <li class="info">
+                     Custom Kitchen Note :
+                     <em>
+                         <t t-esc="line.get_grillnote()"/>
+                     </em>
+                 </li>
+             </t>
+            <t t-if="line.get_medium_level() != '' and line.product.breakfast">
+                <t t-log="line.get_medium_level()"></t>
+                <li class="info">
+                     Egg Doneness :
+                     <em>
+                         <t t-esc="line.get_medium_level()"/>
+                     </em>
+                 </li>
+             </t>
+            <t t-if="line.get_grillqty()">
+	             <li class="info grillqty">
+	                 Portion :
+	                 <em class="info grillqty">
+	                     <t t-esc="line.get_grillnqty()"/>
+                         X
+                         <t t-esc="line.get_grillqty().display_name"/>
+	                 </em>
+	             </li>
+	         </t>
+    	</t>
+    </t>
+
+
+    <t t-name="GrillLineWidget">
+        <div class="grill_line-detail-container">
+            <div class="grill_line-detail-scroller touch-scrollable">
+                <!-- <div><t t-esc=" title || 'Manage Order' " /></div> -->
+                <!-- <table t-if="widget.grill_line.is_consumable_bom" class="layout-table"> -->
+                <table class="layout-table">
+                    <thead>
+                        <tr><td class="pos-portion-size"></td></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+	                        <td>
+		                        <div class="grillqty-list grillqtys">
+		                       		<div class="grill-subtitle">Set Qty</div>
+		                        </div>
+                                <div class="grillnqty-list grillnqtys">
+		                       	</div>
+	                        </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <t t-if="grill_line and grill_line.is_breakfast">
+                    <t t-log="grill_line"/>
+                    <div class="grill-note-list">
+                        <table class="layout-table">
+                            <thead>
+                                <tr><td class="pos-custom-note">Egg Doneness</td></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td style="text-align:left;">
+                                   <div class="grill-medium-notes"></div>
+                                </td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+                <table class="layout-table">
+                    <thead>
+                        <tr><td class="pos-cooking-method"></td></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>
+                        <div class="grillmethod-list grillmethods">
+                       		<div class="grill-subtitle">Cooking Methods</div>
+                        </div>
+                        </td></tr>
+                    </tbody>
+                </table>
+
+                <table class="layout-table">
+                    <thead>
+                        <tr><td class="pos-marinade"></td></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>
+                        <div class="marinade-list marinadesmethods">
+                       	    <div class="grill-subtitle">Marinades</div>
+                        </div>
+                        </td></tr>
+                    </tbody>
+                </table>
+
+                <table class="layout-table">
+                    <thead>
+                        <tr><td class="pos-title-addons"></td></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>
+                        <div class="addons-list">
+                            <div class="pos-addons"></div>
+                        </div>
+                        </td></tr>
+                    </tbody>
+                </table>
+
+                <table class="layout-table">
+                    <thead>
+                        <tr><td class="pos-kitchen-note"></td></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>
+                        <div class="kitchen-note-list">
+                            <div class="kitchen-notes"></div>
+                        </div>
+                        </td></tr>
+                    </tbody>
+                </table>
+                <div class="grill-note-list">
+                    <table class="layout-table">
+                        <thead>
+                            <tr><td class="pos-custom-note">Custom Kitchen Note</td></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td style="text-align:left;">
+                   		       <div class="grill-notes"></div>
+                            </td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </t>
+
+
+    <t t-name="GrillWidget">
+        <div class="product-screen screen grill_screen">
+            <div class="leftpane">
+                <div class='window'>
+                    <div class='subwindow'>
+                        <div class='subwindow-container'>
+                            <div class='subwindow-container-fix'>
+                                <div class="placeholder-GrillOrderWidget"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class='subwindow collapsed'>
+                        <div class='subwindow-container'>
+                            <div class='subwindow-container-fix pads'>
+                                <div class="placeholder-ActionpadWidget"></div>
+                                <div class="placeholder-NumpadWidget"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="rightpane">
+                <table class="layout-table">
+                    <thead>
+                        <tr>
+                        <div style="position: -webkit-sticky;position: sticky;top: 0;padding: 10px;font-size: 20px;z-index:100;height:10%;"
+                             id="myHeader">
+                            <div style="width:15%;float: right!important;" class="button confirm grill-order-button">
+                                Confirm Order
+                            </div>
+                        </div>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="content-row">
+                        <td class="content-cell">
+                            <div class="content-container">
+                                <span class="placeholder-GrillLineWidget"/>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="fbu_pos_grill.GrillOrderPopupWidget">
+                <div class="popup popup-text popup-med combo-configurator-popup">
+            <header class="modal-header h2" t-esc="props.product.display_name"/>
+                    <main class="body">
+                <div t-foreach="props.product.combo_ids" t-as="combo_id" t-key="combo_id"
+                     class="d-flex flex-column m-3 mb-4">
+                    <t t-set="combo" t-value="pos.db.combo_by_id[combo_id]"/>
+                    <h3 class="me-auto mb-3" t-esc="combo.name"/>
+                    <div class="product-list d-grid gap-1">
+                        <div t-foreach="combo.combo_line_ids" t-as="combo_line_id" t-key="combo_line_id">
+                            <t t-set="combo_line" t-value="pos.db.combo_line_by_id[combo_line_id]"/>
+                            <t t-set="product" t-value="pos.db.product_by_id[combo_line.product_id[0]]"/>
+                            <input
+                                    type="radio"
+                                    t-attf-name="combo-{{combo_id}}"
+                                    t-attf-id="combo-{{combo_id}}-combo_line-{{combo_line_id}}"
+                                    t-attf-value="{{combo_line_id}}"
+                                    t-model="state.combo[combo_id]"
+                                    t-att-class="{ 'selected': state.combo[combo_id] == combo_line_id }"
+                            />
+                            <label t-attf-for="combo-{{combo_id}}-combo_line-{{combo_line_id}}"
+                                   class="combo-line h-100 w-100 rounded cursor-pointer transition-base">
+                                <ProductCard
+                                        class="'flex-column h-100 border'"
+                                        name="product.display_name"
+                                        productId="product.id"
+                                        price="formattedComboPrice(combo_line)"
+                                        imageUrl="product.getImageUrl()"
+                                        onClick="(ev) => this.onClickProduct({ product, combo_line }, ev)"
+                                />
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </main>
+                    <footer class="footer footer-flex modal-footer">
+                <t t-set="_allSelected" t-value="areAllCombosSelected()"/>
+                        <button class="button highlight confirm btn btn-lg btn-primary"
+                                t-att-disabled="!_allSelected"
+                                t-on-click="confirm">
+                        Add to order
+                </button>
+                        <button class="button cancel btn btn-lg btn-secondary" t-on-click="cancel">
+                        Discard
+                </button>
+                        <div class="ms-auto">
+                    <!-- TODO: Restore the feature the shows the price of the selection. -->
+                            <t t-if="!_allSelected">
+                        Complete the selection to proceed
+                    </t>
+                </div>
+            </footer>
+        </div>
+
+        <!--        <div class="modal-dialog">-->
+        <!--            <div class="popup popup-grill-order touch-scrollable">-->
+        <!--				&lt;!&ndash; <div style="position: -webkit-sticky;position: sticky;top: 0;padding: 10px;font-size: 20px;z-index:100;height:10%;">-->
+        <!--                    <div style="width:15%;float: right!important;" class="button confirm grill-order-button">-->
+        <!--                        Confirm Order-->
+        <!--                    </div>-->
+        <!--				</div> &ndash;&gt;-->
+        <!--                <div class="grill-popuporder-wrap">-->
+        <!--                	<div class="placeholder-GrillWidget"></div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+    </t>
+
+</templates>

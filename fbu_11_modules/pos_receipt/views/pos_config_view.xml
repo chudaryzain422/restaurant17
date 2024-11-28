@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pos_config_view_form_inherit_pos_receipt" model="ir.ui.view">
+        <field name="name">pos.config.form.view.inherit.pos.receipt</field>
+        <field name="model">pos.config</field>
+        <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//setting[@id='other_devices']" position="before">
+                <setting id="count_print_recepits" string="No. of Print Receipts">
+
+                    <field name="no_of_print_recepits"/>
+                </setting>
+                <div t-attf-class="text-muted" invisible="no_of_print_recepits &lt; 2">
+                    <div class="text-muted">
+                        Add a custom message to the header and footer for additional prints
+                    </div>
+                    <setting string="custom header">
+                        <field name="duplicate_receipt_header" placeholder="e.g. Duplicate"/>
+                    </setting>
+                    <setting string="custom footer">
+                        <field name="duplicate_receipt_footer" placeholder="e.g. Duplicate!"/>
+                    </setting>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>
