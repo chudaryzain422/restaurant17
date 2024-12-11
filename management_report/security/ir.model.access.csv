@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sale_season,sale_season,model_sale_season,,1,1,1,1
+access.inventory_forecast,access_inventory_forecast,model_inventory_forecast,base.group_user,1,1,1,1
+access_forecast.analysis.report,access_forecast_analysis_report,model_forecast_analysis_report,base.group_user,1,1,1,1
+access_report_all_channels_sales_report,access_report_all_channels_sales_report,model_report_all_channels_sales,base.group_user,1,1,1,1
+
+

@@ -1,0 +1,108 @@
+<odoo>
+    <record id="view_inventory_forecast_tree" model="ir.ui.view">
+        <field name="name">inventory.forecast.tree</field>
+        <field name="model">inventory.forecast</field>
+        <field name="arch" type="xml">
+            <tree create="0">
+                <field name="product_id"/>
+<!--                <field name="quantity_to_purchase"/>-->
+                <field name="available_stock"/>
+                <field name="expected_stock"/>
+<!--                <field name="lead_time"/>-->
+                <field name="average_sales"/>
+
+                <field name="growth_rate"/>
+                <field name="growth_rate_forecasted_sales"/>
+                <field name="forecasted_sales_next"/>
+                <field name="forecasted_sales_3next"/>
+<!--                <field name="forecast_data"/>-->
+<!--                <field name="expected_sales" />-->
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_inventory_forecast" model="ir.actions.act_window">
+        <field name="name">Inventory Forecast</field>
+        <field name="res_model">inventory.forecast</field>
+        <field name="view_mode">tree</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Start forecasting your inventory!
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_inventory_forecast" name="Inventory Forecast"
+              parent="report_menu_root"
+              action="action_inventory_forecast"/>
+
+    <record id="view_inventory_forecast_filter" model="ir.ui.view">
+        <field name="name">inventory.forecast.filter</field>
+        <field name="model">inventory.forecast</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="product_id"/>
+                <field name="lead_time"/>
+<!--                <filter string="Next 30 Days" domain="[('lead_time', '&lt;=', 30)]"/>-->
+<!--                <filter string="Past 90 Days" domain="[('lead_time', '&gt;=', 90)]"/>-->
+            </search>
+        </field>
+    </record>
+
+
+    <record id="ir_cron_cforecast_inventory" model="ir.cron">
+    <field name="name">Train Inventory Forecast Model</field>
+    <field name="model_id" ref="model_inventory_forecast"/>
+    <field name="state">code</field>
+    <field name="code">model.train_model()</field>
+    <field name="interval_number">1</field>
+    <field name="interval_type">days</field>
+    <field name="numbercall">-1</field>
+</record>
+
+
+<!--    <template id="assets_backend" name="inventory_foreeecasting_assets" inherit_id="web.assets_backend">-->
+<!--        <xpath expr="." position="inside">-->
+<!--            <script type="text/javascript" src="/forecasting_report/static/js/inventory_forecasting.js"></script>-->
+<!--            <link rel="stylesheet" href="/forecasting_report/static/css/inventory_forecasting.css"/>-->
+<!--        </xpath>-->
+<!--    </template>-->
+
+
+
+<!--    <template id="assets_backend" name="Inventory Forecast Assets" inherit_id="web.assets_backend">-->
+<!--        <xpath expr="." position="inside">-->
+<!--            <script src="https://cdn.jsdelivr.net/npm/nouislider"></script>-->
+<!--            <script>-->
+<!--                document.addEventListener('DOMContentLoaded', function() {-->
+<!--                    var growthSlider = document.getElementById('projectedGrowthSlider');-->
+<!--                    noUiSlider.create(growthSlider, {-->
+<!--                        start: [30],  // Default growth 30%-->
+<!--                        range: {-->
+<!--                            'min': -90,  // Minimum -90%-->
+<!--                            'max': 300   // Maximum 300%-->
+<!--                        }-->
+<!--                    });-->
+
+<!--                    growthSlider.noUiSlider.on('change', function(values, handle) {-->
+<!--                        var growthRate = values[handle];-->
+<!--                        // Logic to adjust the forecasted sales based on the growth rate-->
+<!--                        recalculateForecast(growthRate);-->
+<!--                    });-->
+
+<!--                    function recalculateForecast(growthRate) {-->
+<!--                        // Example logic to recalculate forecasted sales-->
+<!--                        var forecastedSales = document.querySelectorAll('.forecasted-sales');-->
+<!--                        forecastedSales.forEach(function(el) {-->
+<!--                            var baseSales = parseFloat(el.dataset.baseSales);-->
+<!--                            el.textContent = (baseSales * (1 + growthRate / 100)).toFixed(2);-->
+<!--                        });-->
+<!--                    }-->
+<!--                });-->
+<!--            </script>-->
+<!--        </xpath>-->
+<!--    </template>-->
+
+
+
+</odoo>

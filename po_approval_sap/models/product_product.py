@@ -15,7 +15,7 @@ class ProductProductInherit(models.Model):
 
         url = "https://sams4sed.sam.ae:50201/sap/opu/odata/SAP/ZSH_MATNR_SRV/MATNR_SHSet?$filter=Werks eq '2100'&sap-client=130&$format=json"
 
-        auth = HTTPBasicAuth('MISERVICE', 'welcome123')
+        auth = HTTPBasicAuth('VENDORPORTAL', 'Vendor@12345')
         response = requests.get(url, auth=auth)
         if response.status_code == 200:
             materials_data = response.json()

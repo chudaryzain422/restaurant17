@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+   <!-- Action for dashboard menu -->
+    <record id="sales_dashboard_action" model="ir.actions.client">
+        <field name="name">Sales Dashboard</field>
+        <field name="tag">sales_dashboard_tag</field>
+    </record>
+    <!-- Dashboard menu item -->
+
+
+        <!-- Top menu item -->
+
+        <menuitem id="report_menu_root"
+            name="Management Reporting"
+            web_icon="fbu_marketing_team_reports,static/description/icon.png"
+            active="True"
+            sequence="7" />
+
+<menuitem id="salesdashboard_menu_root" name="Sales Dashboard"
+              action="sales_dashboard_action"
+          parent="report_menu_root"
+            />
+
+    <record id="view_sale_season_report_tree" model="ir.ui.view">
+        <field name="name">sale.season.tree</field>
+        <field name="model">sale.season</field>
+        <field name="arch" type="xml">
+            <tree string="Seasonal Sales Report">
+                <field name="year" />
+                <field name="name" />
+                <field name="start_date" />
+                <field name="end_date" />
+            </tree>
+        </field>
+    </record>
+
+         <record id="view_sale_season_report_form" model="ir.ui.view">
+        <field name="name">sale.season.form</field>
+        <field name="model">sale.season</field>
+        <field name="arch" type="xml">
+            <form string="Seasonal Sales">
+
+                <sheet>
+                    <header>
+                        <button name="generate_line" type="object" string="Sync"/>
+                    </header>
+                    <group>
+                        <group>
+
+                            <field name="name"/>
+                              <field name="start_date"/>
+                        </group>
+                        <group>
+
+                            <field name="year"/>
+
+                    <field name="end_date"/>
+                        </group>
+                    </group>
+
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+
+
+    <!-- Action to Open the Report -->
+    <record id="action_sale_season_report" model="ir.actions.act_window">
+        <field name="name">Seasonal Sales Report</field>
+        <field name="res_model">sale.season</field>
+        <field name="view_mode">tree,form</field>
+<!--        <field name="target">new</field>-->
+    </record>
+
+    <!-- Menu Item for Accessing the Seasonal Sales Report -->
+    <menuitem id="menu_seasonal_sales_report" name="Sales Event Report"
+              parent ="report_menu_root"
+               action="action_sale_season_report" />
+
+
+
+
+        
+    </data>
+</odoo>
+
+
+
+

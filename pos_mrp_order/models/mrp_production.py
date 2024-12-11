@@ -60,7 +60,7 @@ class MrpProduction(models.Model):
                             bom = []
                         if bom:
                             #this operation type is used for pos saprete location and its
-                            operation_type = self.env['stock.picking.type'].search([('warehouse_id.code', '=','RES W'),('code', '=', 'mrp_operation')])
+                            operation_type = self.env['stock.picking.type'].search([('warehouse_id.code', '=','WH'),('code', '=', 'mrp_operation')])
                             vals = {
                                 'origin': 'POS-' + prod['pos_reference'],
                                 'state': 'confirmed',
@@ -82,7 +82,7 @@ class MrpProduction(models.Model):
                                     'product_uom_qty': (bom_line.product_qty * mrp_order.product_qty)/self.env['mrp.bom'].search([("product_tmpl_id", "=", prod['product_tmpl_id'])]).product_qty,
                                     'picking_type_id': mrp_order.picking_type_id.id,
                                     'location_id': mrp_order.location_src_id.id,
-                                    'location_dest_id': bom_line.product_id.with_company(self.company_id.id).property_stock_production.id,
+                                    # 'location_dest_id': bom_line.product_id.with_company(self.company_id.id).property_stock_production.id,
                                     'company_id': mrp_order.company_id.id,
                                 }))
                             finished_vals = {

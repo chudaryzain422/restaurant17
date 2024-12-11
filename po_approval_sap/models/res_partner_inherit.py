@@ -51,7 +51,7 @@ class ResPartnerInherit(models.Model):
 
     def action_import_vendors(self):
         url = "https://sams4sed.sam.ae:50201/sap/opu/odata/SAP/API_BUSINESS_PARTNER/A_SupplierCompany?$filter=CompanyCode eq '2100'"
-        auth = HTTPBasicAuth('MISERVICE', 'welcome123')
+        auth = HTTPBasicAuth('VENDORPORTAL', 'Vendor@12345')
         headers = {
             'Accept': 'application/json'
         }

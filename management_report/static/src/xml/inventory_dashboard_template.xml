@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Inventory Dashboard template -->
+<templates id="inventory_dashboard_template" xml:space="preserve">
+
+	<t t-name="SalesDashboard" owl="1">
+		<div class="oh_dashboards" t-ref="root" style="height:100%; overflow-y: scroll; overflow-x: hidden;">
+
+			<!-- Graphs -->
+            <div class="dashboardfilter-container">
+    <label for="from-date">From:</label>
+    <input type="date" id="start_date" name="from-date"/>
+
+    <label for="to-date">To:</label>
+    <input type="date" id="end_date" name="to-date"/>
+
+
+
+
+    <button id="apply_filter" class="btn btn-primary">Apply</button>
+</div>
+
+            <div class="metrics">
+        <div class="metric-card">
+             <p>Total Sales</p>
+            <h2 id="total-sales">$0</h2>
+
+        </div>
+        <div class="metric-card">
+             <p>Quantity Sold</p>
+            <h2 id="total-qtysales">$0</h2>
+
+        </div>
+
+        <div class="metric-card">
+            <p>Total Profit</p>
+            <h2 id="total-profit">$0</h2>
+
+        </div>
+        <div class="metric-card">
+             <p>Cost</p>
+            <h2 id="cost-value">$0</h2>
+
+        </div>
+    </div>
+			<div class="row mt-4 px-4" id="graphs" style="padding-bottom:30px;">
+
+<!--											<button class="btn_info" id="year_sales_move_info" title="Show Details">-->
+
+<!--											</button>-->
+
+        <div class="custom_chart_container">
+        <div class="chart-box">
+            <canvas id="overviewsales" width="600" height="600"></canvas>
+        </div>
+            <div class="chart-box">
+                <canvas id="monthly_trendnig_sales" width="600" height="600"></canvas>
+
+
+        </div>
+
+
+    </div>
+
+				 <div class="custom_chart_container">
+
+
+             <div class="chart-box">
+                <canvas id="yearly_festival_sales_report"></canvas>
+        </div>
+             <div class="chart-box">
+                <canvas id="seasonal_festival_sales_report"></canvas>
+        </div>
+
+         </div>
+
+
+<!--			<div class="col-md-12">-->
+
+
+
+<!--			<div class="year_to_date_graph_div col-sm-12 col-md-6 my-4">-->
+<!--					<div class="chart-container card-shadow" id="tiles">-->
+<!--						<div style="height: 20px; max-height: 20px;"-->
+<!--								 class="d-flex justify-content-between align-items-center">-->
+<!--							<h2>Yearly sales report</h2>-->
+<!--							<div class="form-group col-2"-->
+<!--									 id="product_move_select">-->
+<!--								<select id="year_sales_move_selection" t-ref="year_sales_move_selection" class="btn btn-primary" t-on-change="onchange_year_sales_moves_selection">-->
+<!--									<t t-foreach="state.year_sales" t-as="categ" t-key="categ_index">-->
+<!--										<t t-if="categ_index == 0">-->
+<!--											<option t-att-id="categ_index" t-att-value="state.year_sales[categ_index]" selected="selected">-->
+<!--												<t t-out="state.year_sales[categ_index]"/>-->
+<!--											</option>-->
+<!--										</t>-->
+<!--										<t t-else="">-->
+<!--											<option t-att-id="categ_index" t-attf-value="#{state.year_sales[categ_index]}">-->
+<!--												<t t-out="state.year_sales[categ_index]"/>-->
+<!--											</option>-->
+<!--										</t>-->
+<!--									</t>-->
+<!--								</select>-->
+<!--							</div>-->
+<!--							<button class="btn_info" id="year_sales_move_info" title="Show Details" t-on-click="onclick_year_sales_move_info">-->
+<!--								<i class="fa fa-ellipsis-v"/>-->
+<!--							</button>-->
+<!--							<table class="graph_details_table" id="year_sales_table">-->
+<!--								<tr>-->
+<!--									<th>year</th>-->
+<!--									<th>Sales</th>-->
+<!--									<th>Sales</th>-->
+<!--									<th>Growth</th>-->
+<!--								</tr>-->
+<!--								<t t-foreach="state.year_sales_count" t-as="monthly_count" t-key="monthly_count_index">-->
+<!--									<tr>-->
+<!--										<td><t t-out="state.year_sales[monthly_count_index]"/></td>-->
+<!--										<td><t t-esc="monthly_count"/></td>-->
+<!--									</tr>-->
+<!--	                    		</t>-->
+<!--							</table>-->
+<!--						</div>-->
+<!--						<hr/>-->
+<!--						<div class="graph_canvas" style="margin-top: 30px;">-->
+<!--							<canvas id="year_sales_move_graph" height="500px"-->
+<!--										width="150px"/>-->
+<!--						</div>-->
+
+
+<!--					</div>-->
+<!--				</div>-->
+<!--	<div class="year_to_date_graph_div col-sm-12 col-md-6 my-4">-->
+<!--					<div class="chart-container card-shadow" id="tiles">-->
+<!--						<div style="height: 20px; max-height: 20px;"-->
+<!--								 class="d-flex justify-content-between align-items-center">-->
+<!--							<h2>Yearly sales report (Growth )</h2>-->
+
+
+<!--						</div>-->
+<!--						<hr/>-->
+<!--						<div class="graph_canvas" style="margin-top: 30px;">-->
+<!--							<canvas id="year_sales_move_graph_growth" height="500px"-->
+<!--										width="150px"/>-->
+<!--						</div>-->
+
+<!--						<div class="info-cards">-->
+
+<!--            <div id="cgcar_info" class="card gray-card">-->
+<!--                 <h2>CAGR (2023-2031)</h2>-->
+<!--                <p>15.8%</p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--	</div>-->
+			</div>
+
+		</div>
+	</t>
+</templates>
+
+
